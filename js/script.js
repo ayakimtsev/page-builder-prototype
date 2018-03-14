@@ -13,6 +13,18 @@ function initDropable(){
         greedy: true,
         accept:'.pb-block',
         tolerance: 'pointer',
+        over: function(event, ui) {
+            var $target = $(event.target);
+
+            //if
+            //ui.draggable.css("cursor", "copy");
+
+            
+        },
+        out: function(event, ui) {
+            //debugger;
+            //ui.draggable.css("cursor", "no-drop");
+        },
         drop: function( event, ui ) {
             var blockType = ui.draggable.attr('data-type'),
                 $target = $(event.target);
