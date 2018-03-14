@@ -1,0 +1,153 @@
+* {
+	box-sizing: border-box;
+}
+
+html,
+body{
+	margin:0;
+}
+
+body{
+	min-width: 1224px;
+}
+
+[draggable],
+.pb-block {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	-khtml-user-drag: element;
+	-webkit-user-drag: element;
+
+	cursor: move;
+}
+
+.content {
+	width: 786px;
+	margin: 0 auto;
+}
+
+.pb-content-flow{
+	padding: 3px 0;
+}
+
+.pb-header,
+.pb-menu,
+.pb-footer{
+	text-align: center;
+	padding: 10px 0;
+	height: 40px;
+	background: #eee;
+	position: relative;
+}
+.pb-menu{
+	margin: 3px 0 0;
+}
+
+.pb-header::after,
+.pb-menu::after,
+.pb-footer::after{
+	content:"";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	background: repeating-linear-gradient(
+		-45deg,
+		rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0) 10px,
+		rgba(0, 0, 0, 0.1) 10px, 
+		rgba(0, 0, 0, 0.1) 20px,
+		rgba(0, 0, 0, 0) 20px
+	);
+}
+
+.pb-layout {
+	display: flex;
+	width: 100%;
+	min-height: 200px;
+	padding: 0 10px;
+	background: #efefef;
+
+	border: 1px solid #999;
+	border-radius: 5px;
+	margin: 3px 0 0 0;
+	position: relative;
+}
+
+.pb-layout:first-child{
+	margin: 0;
+}
+
+.pb-layout > .pb-layout{
+	max-width: 70%;
+	width: 100%;
+	z-index: 3;
+	min-height: 0;
+	margin:0 auto;
+	padding: 20px 10px;
+	border-radius: 0;
+	border-top-width:0;
+	border-bottom-width:0;
+	border-style: dashed;
+}
+
+.ui-droppable-disabled:not(.state-dropped){
+	border-style: dashed;
+	background: #fff;
+}
+
+.pb-blocks-list{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 0 0;
+	position: fixed;
+	top: 43px;
+	left: 50%;
+	margin-left: 410px;
+	width: 150px;
+}
+
+.pb-block {
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+	border-radius: 3px;
+	border: 1px solid #666;
+	margin: 0 0 10px;
+}
+
+.pb-block:first-child {
+	margin-left: 0;
+}
+
+.state-dropped > .pb-layout,
+.ui-droppable-hover > .pb-layout{
+	display: none;
+}
+
+.pb-layout > .state-dropped{
+	border-style: solid;
+	margin-top: -1px;
+	border-top-width: 1px;
+	margin-bottom: -1px;
+	border-bottom-width: 1px;
+	border-radius: 5px;
+}
+
+.ui-droppable-hover{
+	background: rgba(70, 131, 180, 0.35);
+	border-color:cornflowerblue;
+	z-index: 1;
+}
+
+.ui-droppable-active{
+	border-color:cornflowerblue;
+	box-shadow: inset 0 0 3px 0 cornflowerblue;
+}

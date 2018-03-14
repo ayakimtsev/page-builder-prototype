@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link type="text/css" rel="stylesheet" href="css/jquery-ui.css"/>
+        <link type="text/css" rel="stylesheet" href="css/jquery-ui.structure.css"/>
+        <link type="text/css" rel="stylesheet" href="css/styles.css"/>
+    </head>
+    <body>
+        <div class="content">
+            <div class="pb-header">
+                Header
+            </div>
+            <!-- <div class="pb-menu">
+                Menu
+            </div> -->
+
+            <div id="pbContentFlow" class="pb-content-flow">
+                <div class="pb-layout" data-type="full">
+                    <div class="pb-layout" data-type="content"></div>
+                </div>
+            </div>
+
+            <div class="pb-blocks-list">
+                <div class="pb-block" data-type="text">
+                    Text
+                </div>
+                <div class="pb-block" data-type="image">
+                    Image
+                </div>
+                <div class="pb-block" data-type="columns">
+                    Columns
+                </div>
+            </div>
+
+            <div class="pb-footer">
+                Footer
+            </div>
+        </div>
+
+        <script id="pbTmpLayout" type="text/template">
+            <div class="pb-layout" data-type="full">
+                <div class="pb-layout" data-type="content"></div>
+            </div>
+        </script>
+        <script id="pbTmpText" type="text/template">
+            <div class="pb-preview pb-preview-text">
+                Text
+            </div>
+        </script>
+        <script id="pbTmpImage" type="text/template">
+            <div class="pb-preview pb-preview-image">
+                Image
+            </div>
+        </script>
+        <script id="pbTmpColumns" type="text/template">
+            <div class="pb-preview pb-preview-columns">
+                Columns
+            </div>
+        </script>
+        <script id="pbTmpEditPanel" type="text/template">
+            <div class="pb-preview pb-editPanel">
+                <a href='#'></a>
+            </div>
+        </script>
+
+
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
