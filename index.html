@@ -4,8 +4,8 @@
         <title>test page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link type="text/css" rel="stylesheet" href="css/jquery-ui.css"/>
-        <link type="text/css" rel="stylesheet" href="css/jquery-ui.structure.css"/>
+        <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.css"/>
+        <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.structure.css"/>
         <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     </head>
     <body>
@@ -13,6 +13,7 @@
             <div class="pb-header">
                 Header
             </div>
+            
             <!-- <div class="pb-menu">
                 Menu
             </div> -->
@@ -35,6 +36,10 @@
                 </div>
             </div>
 
+            <!-- <div class="pb-sitemap">
+                Sitemap
+            </div> -->
+
             <div class="pb-footer">
                 Footer
             </div>
@@ -56,19 +61,56 @@
             </div>
         </script>
         <script id="pbTmpColumns" type="text/template">
-            <div class="pb-preview pb-preview-columns">
-                Columns
+            <div class="pb-preview">
+                <h2 class="pb-preview-title">Columns layout</h2>
+
+                <div class="pb-columns-box">
+                    <a href="#" class="pb-columns-variant" data-columns="2">
+                        <span></span>
+                        <span></span>
+                    </a>
+                    <a href="#" class="pb-columns-variant" data-columns="3">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                    <a href="#" class="pb-columns-variant" data-columns="4">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                    <a href="#" class="pb-columns-variant" data-columns="5">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                    <a href="#" class="pb-columns-variant" data-columns="6">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+
             </div>
         </script>
         <script id="pbTmpEditPanel" type="text/template">
             <div class="pb-preview pb-editPanel">
-                <a href='#'></a>
+                <a href='#' data-type='edit' class='pb-preview-link'></a>
+                <a href='#' data-type='layout' class='pb-preview-link'></a>
+                <a href='#' data-type='delete' class='pb-preview-link'></a>
+                <a href='#' data-type='move' class='pb-preview-link'></a>
             </div>
         </script>
 
 
-        <script src="js/jquery-3.1.1.min.js"></script>
-        <script src="js/jquery-ui.js"></script>
+        <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/libs/jquery-ui.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>
