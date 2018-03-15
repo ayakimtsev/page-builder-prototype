@@ -4,7 +4,7 @@ var $contentBox = $('#pbContentFlow'),
         text: $('#pbTmpText').html().trim(),
         image: $('#pbTmpImage').html().trim(),
         columns: $('#pbTmpColumns').html().trim(),
-        'edit-panel': $('#pbTmpColumns').html().trim(),
+        'edit-panel': $('#pbTmpEditPanel').html().trim(),
     };
 
 var previewsCallbacks = {
@@ -15,7 +15,7 @@ var previewsCallbacks = {
             columnsTemlate = '';
     
             for(var i = 0; i < cntColumns; i++){
-                columnsTemlate += '<div class="pb-inner-column pb-layout"></div>';
+                columnsTemlate += '<div class="pb-inner-column pb-layout" data-type="inner"></div>';
             }
             columnsTemlate = '<div class="pb-columns-layout" data-columns="'+cntColumns+'">' + columnsTemlate + '</div>'
             $target.hide()
@@ -28,6 +28,9 @@ var previewsCallbacks = {
             e.preventDefault();
             createColumns($(this), $target.children('.pb-preview'));
         });
+    },
+    initTypeEditor: function($elm){
+        $elm.append(templates['edit-panel']);
     }
 }
 
@@ -36,10 +39,10 @@ function initDropable(){
     $('.pb-layout:not(.ui-droppable)').droppable({
         greedy: true,
         accept:'.pb-block',
-        tolerance: 'pointer',
+        tolerance: 'intersect',
         activate: function( event, ui ) {
             var blockType = $(ui.draggable).attr('data-type');
-            console.log(blockType);
+
             if(blockType == "columns") $contentBox.addClass('ui-prevent-nested-active');
         },
         deactivate: function( event, ui ) {
@@ -77,6 +80,9 @@ function initDropable(){
             if(blockType === 'columns'){
                 previewsCallbacks.initColumnsLayout($target);
             }
+
+            // add edit panel
+            previewsCallbacks.initTypeEditor($target.find('.pb-preview-' + blockType));
 
             if(!$target.hasClass('pb-inner-column')){
                 // add next block into general flow

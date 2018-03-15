@@ -107,7 +107,7 @@ body{
 	max-width: 70%;
 	width: 100%;
 	z-index: 3;
-	height: 200px;
+	height: 198px;
 	min-height: 0;
 	margin:0 auto;
 	border-radius: 0;
@@ -117,7 +117,7 @@ body{
 }
 
 .state-dropped{
-	padding: 20px 10px;
+	padding: 30px 20px;
 	/* min-height: 20px;
 	height: auto; */
 }
@@ -129,7 +129,6 @@ body{
 		justify-content: space-between;
 		width: calc(100% - 20px);
 		margin: 0 auto;
-
 	}
 
 	.pb-inner-column{
@@ -141,6 +140,8 @@ body{
 		margin: 0 5px;;
 	}
 
+	[data-type="content"]::after,
+	[data-type="full"]::after,
 	.pb-inner-column::after{
 		content: "\f12e";
 		font-family: 'FontAwesome';
@@ -159,6 +160,14 @@ body{
 		width: 48px;
 		height: 48px;
 		line-height: 48px;
+
+		transition: all 0.2s ease;
+	}
+	
+
+	[data-type="full"]::after{
+		left: auto;
+		right: 38px;
 	}
 	/**/
 
@@ -338,5 +347,30 @@ body{
 .pb-devices > a.active{
 	cursor: default;
 }
+/* END device nav */
 
-/* END */
+
+/**/
+.pb-editPanel{
+	position: absolute;
+	right: 0;
+	top: 0;
+	left: auto;
+	background: #333;
+	color:#fff;
+	padding: 5px;
+	border-radius: 0 0 0 5px;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.pb-preview-link{
+	color:#fff;
+	text-decoration: none;
+	font-size: 19px;
+	line-height: 19px;
+	margin: 0 2px;
+}
+/**/
