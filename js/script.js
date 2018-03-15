@@ -42,6 +42,8 @@ function initDropable(){
         accept:'.pb-block',
         tolerance: 'intersect',
         activate: function( event, ui ) {
+            $('.pb-devices-desktop').click();
+            
             var blockType = $(ui.draggable).attr('data-type');
 
             if(blockType == "columns") $contentBox.addClass('ui-prevent-nested-active');
@@ -125,7 +127,4 @@ $('.pb-devices > a').on('click', function(e){
     } else {
         $content.removeClass('state-tablet-view state-mobile-view');
     }
-
-
-
 });

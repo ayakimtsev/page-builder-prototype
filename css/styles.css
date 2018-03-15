@@ -96,7 +96,7 @@ body{
 	display: flex;
 	width: 100%;
 	min-height: 200px;
-	padding: 0 10px;
+	padding: 0;
 	background: #efefef;
 
 	border: 1px solid #999;
@@ -113,8 +113,8 @@ body{
 }
 
 .pb-layout > .pb-layout{
-	max-width: 70%;
-	width: 100%;
+	max-width: 100%;
+	width: 530px;
 	z-index: 3;
 	margin:0 auto;
 	min-height: 198px;
