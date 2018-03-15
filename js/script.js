@@ -39,7 +39,7 @@ function initDropable(){
         tolerance: 'pointer',
         activate: function( event, ui ) {
             var blockType = $(ui.draggable).attr('data-type');
-
+            console.log(blockType);
             if(blockType == "columns") $contentBox.addClass('ui-prevent-nested-active');
         },
         deactivate: function( event, ui ) {
@@ -58,6 +58,8 @@ function initDropable(){
         //     //ui.draggable.css("cursor", "no-drop");
         // },
         drop: function( event, ui ) {
+            $contentBox.removeClass('ui-prevent-nested-active');
+            
             var blockType = ui.draggable.attr('data-type'),
                 $target = $(event.target);
 
