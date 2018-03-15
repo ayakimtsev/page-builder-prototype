@@ -10,6 +10,11 @@
         <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     </head>
     <body>
+        <nav class="pb-devices">
+            <a href="#" class="pb-devices-desktop active fa fa-desktop"></a>
+            <a href="#" class="pb-devices-tablet fa fa-tablet"></a>
+            <a href="#" class="pb-devices-mobile fa fa-mobile"></a>
+        </nav>
         <div class="content">
             <div class="pb-header">
                 Header
@@ -26,14 +31,14 @@
             </div>
 
             <div class="pb-blocks-list">
-                <div class="pb-block" data-type="text">
-                    Text
+                <div class="pb-block fa fa-align-justify" data-type="text" text="Text block">
+                    <!-- Text -->
                 </div>
-                <div class="pb-block" data-type="image">
-                    Image
+                <div class="pb-block fa fa-image" data-type="image" text="Image block">
+                    <!-- Image -->
                 </div>
-                <div class="pb-block" data-type="columns">
-                    Columns
+                <div class="pb-block fa fa-columns" data-type="columns" text="Columns block">
+                    <!-- Columns -->
                 </div>
             </div>
 
@@ -53,12 +58,12 @@
         </script>
         <script id="pbTmpText" type="text/template">
             <div class="pb-preview pb-preview-text">
-                Text
+                Text section
             </div>
         </script>
         <script id="pbTmpImage" type="text/template">
             <div class="pb-preview pb-preview-image">
-                Image
+                Image section
             </div>
         </script>
         <script id="pbTmpColumns" type="text/template">
@@ -67,34 +72,34 @@
 
                 <div class="pb-columns-box">
                     <a href="#" class="pb-columns-variant" data-columns="2">
-                        <span></span>
-                        <span></span>
+                        <div></div>
+                        <div></div>
                     </a>
                     <a href="#" class="pb-columns-variant" data-columns="3">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </a>
                     <a href="#" class="pb-columns-variant" data-columns="4">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </a>
                     <a href="#" class="pb-columns-variant" data-columns="5">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </a>
                     <a href="#" class="pb-columns-variant" data-columns="6">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </a>
                 </div>
 
@@ -102,10 +107,10 @@
         </script>
         <script id="pbTmpEditPanel" type="text/template">
             <div class="pb-preview pb-editPanel">
-                <a href='#' data-type='edit' class='pb-preview-link'></a>
-                <a href='#' data-type='layout' class='pb-preview-link'></a>
-                <a href='#' data-type='delete' class='pb-preview-link'></a>
-                <a href='#' data-type='move' class='pb-preview-link'></a>
+                <a href='#' data-type='edit' class='pb-preview-link fa fa-pencil'></a>
+                <a href='#' data-type='layout' class='pb-preview-link fa fa-cog'></a>
+                <a href='#' data-type='delete' class='pb-preview-link fa fa-trash'></a>
+                <a href='#' data-type='move' class='pb-preview-link fa fa-arrows'></a>
             </div>
         </script>
 
