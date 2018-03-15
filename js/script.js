@@ -1,4 +1,5 @@
 var $contentBox = $('#pbContentFlow'),
+    $content = $('.pb-content'),
     templates = {
         nextBlockLayout: $('#pbTmpLayout').html().trim(),
         text: $('#pbTmpText').html().trim(),
@@ -105,4 +106,26 @@ $('.pb-block').each(function(){
         revertDuration: 0,
         opacity: 0.35
     });
+});
+
+
+$('.pb-devices > a').on('click', function(e){
+    e.preventDefault();
+    var $ths =$(this);
+    
+    $('.pb-devices > a').removeClass('active');
+    $ths.addClass('active');
+
+    if( $ths.hasClass('pb-devices-tablet') ){
+        $content.removeClass('state-mobile-view');
+        $content.addClass('state-tablet-view');
+    } else if ( $ths.hasClass('pb-devices-mobile') ){
+        $content.removeClass('state-tablet-view');
+        $content.addClass('state-mobile-view');
+    } else {
+        $content.removeClass('state-tablet-view state-mobile-view');
+    }
+
+
+
 });
