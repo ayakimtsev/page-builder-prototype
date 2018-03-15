@@ -18,8 +18,8 @@ var previewsCallbacks = {
                 columnsTemlate += '<div class="pb-inner-column pb-layout" data-type="inner"></div>';
             }
             columnsTemlate = '<div class="pb-columns-layout" data-columns="'+cntColumns+'">' + columnsTemlate + '</div>'
-            $target.hide()
-                   .after(columnsTemlate);
+            $target.children(':not(.pb-editPanel)').hide();
+            $target.append(columnsTemlate);
 
             initDropable();
         }
