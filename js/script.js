@@ -89,7 +89,7 @@ var previewsCallbacks = {
 function initDropable(){
     $('.pb-layout:not(.ui-droppable)').droppable({
         greedy: true,
-        accept:'.pb-block, .pb-opts-link[data-type="move"]',
+        accept:'.pb-element, .pb-opts-link[data-type="move"]',
         tolerance: 'intersect',
         activate: function( event, ui ) {
             $('.pb-devices-desktop').click();
@@ -149,7 +149,7 @@ function initDropable(){
 initDropable();
 
 
-$('.pb-block').each(function(){
+$('.pb-element').each(function(){
     var $ths = $(this);
 
     $ths.draggable({

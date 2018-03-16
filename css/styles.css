@@ -14,7 +14,7 @@ body{
 }
 
 [draggable],
-.pb-block {
+.pb-element {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -224,7 +224,7 @@ body{
 
 
 /* available blocks to drop */
-.pb-blocks-list{
+.pb-elements-list{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -239,7 +239,7 @@ body{
 	z-index: 9999;
 }
 
-.pb-block {
+.pb-element {
 	width: 60px;
 	height: 60px;
 	line-height: 60px;
@@ -252,7 +252,7 @@ body{
 	color: #555;
 }
 
-.pb-block:first-child {
+.pb-element:first-child {
 	margin-left: 0;
 }
 /* END available blocks to drop*/
