@@ -108,7 +108,7 @@ body{
 	transition: all 0.1s linear;
 }
 
-.pb-layout:first-child{
+.pb-content-flow > .pb-layout:first-child{
 	margin: 0;
 }
 
