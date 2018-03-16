@@ -32,6 +32,28 @@ var previewsCallbacks = {
     },
     initTypeEditor: function($elm){
         $elm.append(templates['edit-panel']);
+
+        $elm.find('.pb-opts-link').each(function(){
+            var $ths = $(this),
+                type = $ths.attr('data-type');
+
+            switch (type){
+                case 'edit':
+
+                break;
+                case 'delete':
+
+                break;
+                case 'move':
+                    $ths.draggable({
+                        revert: true,
+                        revertDuration: 0,
+                        opacity: 0.35
+                    });
+                break;
+            }
+
+        });
     }
 }
 
@@ -39,13 +61,12 @@ var previewsCallbacks = {
 function initDropable(){
     $('.pb-layout:not(.ui-droppable)').droppable({
         greedy: true,
-        accept:'.pb-block',
+        accept:'.pb-block, .pb-opts-link[data-type="move"]',
         tolerance: 'intersect',
         activate: function( event, ui ) {
             $('.pb-devices-desktop').click();
             
             var blockType = $(ui.draggable).attr('data-type');
-
             if(blockType == "columns") $contentBox.addClass('ui-prevent-nested-active');
         },
         deactivate: function( event, ui ) {
