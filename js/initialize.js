@@ -1,9 +1,53 @@
+Mediator.publish('init:elements', '.pb-elements-list .pb-element');
+Mediator.publish('init:devicesNav', '.pb-devices > a');
+Mediator.publish('init:layouts', '.pb-layout');
+
+
+
+
+
+
+
+
+
+
+
 /* ---------------------------------------------------------------------------------------------- */
 
 /* block */
     /* - tools list */
     /* tool */
     /* tools previews */
+// function Block(element){
+//     this.$elm = $(element);
+//     this.type = '';
+
+//     this.getType = function(){
+//         return this.type;
+//     }
+// }
+
+// Block.prototype.initDragable = function(){
+//     //this.type = this.$elm.attr('data-type');
+
+//     // this.$elm.draggable({
+//     //     revert: true,
+//     //     revertDuration: 0,
+//     //     opacity: 0.35
+//     // });
+// };
+
+// Block.prototype.offDragable = function(){
+    
+
+// };
+
+// $('.pb-element').each(function(){
+//     var inst = new Block(this);
+
+//     inst.initDragable();
+//     $(this).data('draggable-instance', inst);
+// });
 
 
 
@@ -12,7 +56,28 @@
     /* flows */
         /* layouts */
 
+// function Block(element){
+
+
+// }
+
+
+
+    
+
 /* ---------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
