@@ -1,3 +1,6 @@
+// FUNCTIONS for Elements
+// init:elements
+
 !function(window){
     //var Elements = window.Elements = {};
 

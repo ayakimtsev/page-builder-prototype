@@ -4,10 +4,11 @@
 
     Mediator.installTo(Layouts);
 
+    //var instance = {}
 
     Layouts.subscribe('highlight:layouts', function(event, ui)
         {//
-            DevicesNav.$desktopLink.trigger('click');
+            DevicesNav.show('desktop');
                         
             var blockType = $(ui.draggable).attr('data-type');
             if(blockType == "columns") $contentAllFlows.addClass('ui-prevent-nested-active');
@@ -56,15 +57,23 @@
     );
 
 
+    
+    function getColumnsTemlate(_cntColumns){
+        var _columnsTemlate = '';
+
+
+        for(var i = 0; i < _cntColumns; i++){
+            _columnsTemlate += '<div class="pb-inner-column pb-layout" data-type="inner"></div>';
+        }
+        _columnsTemlate = '<div class="pb-columns-layout" data-columns="'+_cntColumns+'">' + _columnsTemlate + '</div>';
+
+        return _columnsTemlate;
+    }
 
     function createInnerColumns($elm, $target){
         var cntColumns = parseInt( $elm.attr('data-columns') ),
-            columnsTemlate = '';
+            columnsTemlate = getColumnsTemlate(cntColumns);
 
-        for(var i = 0; i < cntColumns; i++){
-            columnsTemlate += '<div class="pb-inner-column pb-layout" data-type="inner"></div>';
-        }
-        columnsTemlate = '<div class="pb-columns-layout" data-columns="'+cntColumns+'">' + columnsTemlate + '</div>'
 
         $target.children(':not(.pb-editPanel)').hide();
         $target.append(columnsTemlate);
@@ -75,6 +84,7 @@
         {//
             $target.find('a').on('click', function(e){
                 e.preventDefault();
+                DevicesNav.show('desktop');
                 createInnerColumns($(this), $target.children('.pb-preview'));
             });
         }//
