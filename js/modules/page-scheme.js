@@ -15,11 +15,13 @@
         $(this).attr('aria-pressed', true);
     });
 
-    PageScheme.init = function () {
-
+    PageScheme.init = function (blueprints) {
+        // take blueprints objects
+        // 
     };
-    /*
-        retrieve needed elements
-        describe handlers on page scheme switch
+    /*  TODO:
+        * retrieve needed dom elements
+        * prepare page blueprints and use it for page-preview redrering
+        * describe handlers on page scheme switch
     */
 }();
