@@ -38,20 +38,26 @@
             $target.droppable("disable")
                 .addClass('state-dropped');
 
-            // + paste next drop layout
+            // + paste next drop layout and init events
             $target.append(Templates[blockType]);
             if(blockType === 'columns'){
-                Layouts.publish('innerColumns:layouts', $target);
+                Layouts.publish('innerColumnsEvents:layouts', $target);
             }
 
             // add edit panel
-            EditPanel.publish('init:editPanel', $target.find('.pb-preview-' + blockType));
+            EditPanel.publish('init:editPanel',
+                $target.find('.pb-preview-' + blockType),
+                ['edit', 'delete', 'move']
+            );
 
             if(!$target.hasClass('pb-inner-column')){
                 // add next block into general flow
-                $thisFlow.append(Templates['nextBlockLayout']);
+                //debugger;
+                if(!areActiveLayouts($thisFlow)){
+                    $thisFlow.append(Templates['parentLayout']);
+                }
 
-                Layouts.publish('init:layouts', $thisFlow.find('.pb-layout'));
+                Layouts.publish('attachDraggable:layouts', $thisFlow.find('.pb-layout'));
             }
         }//
     );
@@ -78,9 +84,9 @@
         $target.children(':not(.pb-editPanel)').hide();
         $target.append(columnsTemlate);
 
-        Layouts.publish('init:layouts', $target.find('.pb-layout'));
+        Layouts.publish('attachDragable:layouts', $target.find('.pb-layout'));
     }
-    Layouts.subscribe('innerColumns:layouts', function($target)
+    Layouts.subscribe('innerColumnsEvents:layouts', function($target)
         {//
             $target.find('a').on('click', function(e){
                 e.preventDefault();
@@ -90,9 +96,15 @@
         }//
     );
 
-    
 
-    Layouts.subscribe('init:layouts', function(element_s)
+    function addParentLayout(flow_s){
+        $(flow_s).append(Templates['parentLayout']);
+    };
+    function areActiveLayouts($flow){
+        return $flow.children('.pb-layout:not(.ui-droppable-disabled)').length !== 0;
+    }
+
+    Layouts.subscribe('attachDraggable:layouts', function(element_s)
         {//
             $(element_s)
                 .not('.ui-droppable')
@@ -114,6 +126,15 @@
                     // out: function(event, ui, $thisFlow) {
                     // },
                 });
+
+        }//
+    );
+
+
+    Layouts.subscribe('init:layouts', function(element_s)
+        {//
+            addParentLayout($contentAllFlows);
+            Layouts.publish('attachDraggable:layouts', element_s);
         }//
     );
 

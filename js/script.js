@@ -1,11 +1,11 @@
 // var $contentBox = $('#pbContentFlow'),
 //     $content = $('.pb-content'),
 //     templates = {
-//         nextBlockLayout: $('#pbTmpLayout').html().trim(),
+//         parentLayout: $('#pbTmpLayout').html().trim(),
 //         text: $('#pbTmpText').html().trim(),
 //         image: $('#pbTmpImage').html().trim(),
 //         columns: $('#pbTmpColumns').html().trim(),
-//         'edit-panel': $('#pbTmpEditPanel').html().trim(),
+//         editPanel: $('#pbTmpEditPanel').html().trim(),
 //     };
 
 // var previewsCallbacks = {
@@ -31,7 +31,7 @@
 //         });
 //     },
 //     initTypeEditor: function($elm){
-//         $elm.append(templates['edit-panel']);
+//         $elm.append(templates['editPanel']);
 
 //         $elm.find('.pb-opts-link').each(function(){
 //             var $ths = $(this),
@@ -138,7 +138,7 @@
 
 //             if(!$target.hasClass('pb-inner-column')){
 //                 // add next block into general flow
-//                 $contentBox.append(templates['nextBlockLayout']);
+//                 $contentBox.append(templates['parentLayout']);
 //                 initDropable();
 //             }
 //         }

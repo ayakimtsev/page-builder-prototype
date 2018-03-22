@@ -4,11 +4,11 @@
     Mediator.installTo(EditPanel);
 
 
-    EditPanel.subscribe('init:editPanel', function(elements)
+    EditPanel.subscribe('init:editPanel', function(elements, buttons)
         {//
             var $elms = $(elements);
 
-            $elms.append(Templates['edit-panel'])
+            $elms.append(Templates['editPanel'])
                  .find('.pb-opts-link').each(function(){
                     var $ths = $(this),
                         type = $ths.attr('data-type');

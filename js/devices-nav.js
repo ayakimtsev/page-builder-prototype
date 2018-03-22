@@ -11,7 +11,6 @@
     Mediator.installTo(DevicesNav);
 
 
-
     // DevicesNav.$desktopLink = $('.pb-devices-desktop');
     // DevicesNav.$tabletLink = $('.pb-devices-tablet');
     // DevicesNav.$mobileLink = $('.pb-devices-mobile');
