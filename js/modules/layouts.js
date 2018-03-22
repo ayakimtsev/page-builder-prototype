@@ -30,12 +30,11 @@
                 .addClass('state-dropped');
     }
     function enableParentDroppable($target){
-
-        // if($target.closest('[data-type="inner"]')){
-        //     $target.parent('.pb-layout')
-        //                 .removeClass('state-dropped ui-droppable-active')
-        //                 .droppable("enable");
-        // } else{
+         if($target.closest('[data-type="inner"]').length){
+             $target.parent('.pb-layout')
+                         .removeClass('state-dropped ui-droppable-active')
+                         .droppable("enable");
+         } else{
             //disable parents
             $target.parents('.pb-layout')
                         .removeClass('state-dropped ui-droppable-active')
@@ -44,7 +43,7 @@
                         .removeClass('state-dropped ui-droppable-active')
                         .droppable("enable");
 
-        //}
+        }
 
     }
 
@@ -114,7 +113,7 @@
             $target.find('a').on('click', function(e){
                 e.preventDefault();
                 DevicesNav.show('desktop');
-                createInnerColumns($(this), $target.children('.pb-preview'));
+                createInnerColumns($(this), $(this).closest('.pb-preview'));
             });
         }//
     );
@@ -155,7 +154,7 @@
                         enableParentDroppable($oldParent);
                             
                         if($draggable.attr('data-type') === 'move'){
-                            $draggable.closest('.pb-preview').prependTo($target);
+                            $draggable.closest('.pb-preview, .pb-inner-column').prependTo($target);
                             disableParentDroppable($target);
                         } else {
                             Layouts.publish('drop:layouts', event, ui);

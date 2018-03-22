@@ -46,7 +46,7 @@
                 $ths.draggable({
                     start: function( event, ui ) {
                         var $current = $(event.target);
-                            $preview = $current.closest('.pb-preview, .pb-layout');
+                            $preview = $current.closest('.pb-preview:not(.pb-preview-columns), .pb-layout');
                         
                         $current.parent().add($preview).addClass('state-dragging');
                         $(ui.helper).closest('.pb-layout[data-type="full"]').css('z-index', 9999);
@@ -56,7 +56,7 @@
                             $preview = $current.closest('.pb-preview, .pb-layout');
 
                         $current.parent().add($preview).removeClass('state-dragging');
-                        $(ui.prevObject).closest('.pb-layout[data-type="full"]').css('z-index', '');
+                        $('.pb-layout[data-type="full"]').css('z-index', '');
                     },
                     // helper: "clone",
                     revert: true,
