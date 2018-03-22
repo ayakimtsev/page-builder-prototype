@@ -73,7 +73,7 @@
             var $elms = $(elements);
 
 
-            $elms.append(Templates['editPanel']);
+            $elms.append(Page.templates['editPanel']);
             $elms.find('.pb-opts-link').each(function(){
                 var $ths = $(this),
                     type = $ths.attr('data-type');

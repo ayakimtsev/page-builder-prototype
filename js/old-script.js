@@ -31,7 +31,7 @@
 //         });
 //     },
 //     initTypeEditor: function($elm){
-//         $elm.append(templates['editPanel']);
+//         $elm.append(Page.templates['editPanel']);
 
 //         $elm.find('.pb-opts-link').each(function(){
 //             var $ths = $(this),
@@ -128,7 +128,7 @@
 //                    .addClass('state-dropped');
 
 //             // + paste next drop layout
-//             $target.append(templates[blockType]);
+//             $target.append(Page.templates[blockType]);
 //             if(blockType === 'columns'){
 //                 previewsCallbacks.initColumnsLayout($target);
 //             }
@@ -138,7 +138,7 @@
 
 //             if(!$target.hasClass('pb-inner-column')){
 //                 // add next block into general flow
-//                 $contentBox.append(templates['parentLayout']);
+//                 $contentBox.append(Page.templates['parentLayout']);
 //                 initDropable();
 //             }
 //         }

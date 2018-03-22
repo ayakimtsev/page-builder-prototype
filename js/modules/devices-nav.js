@@ -6,7 +6,7 @@
 
 !function(window){
     var DevicesNav = window.DevicesNav = {},
-        $content = Templates.$content;
+        $content = Page.$content;
         
     Mediator.installTo(DevicesNav);
 

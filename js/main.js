@@ -19,7 +19,7 @@
 
 Mediator.publish('init:devicesNav', '.pb-devices > a');
 Mediator.publish('init:elements', '.pb-elements-list .pb-element');
-Mediator.publish('init:layouts', '.pb-layout');
+Mediator.publish('init:layouts', '.pb-content-flow');
 
 
 

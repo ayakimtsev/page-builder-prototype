@@ -1,6 +1,6 @@
 !function(window){
     var Layouts = window.Layouts = {},
-        $contentAllFlows = Templates.$contentAllFlows;
+        $contentAllFlows;
 
     Mediator.installTo(Layouts);
 
@@ -62,7 +62,7 @@
             disableParentDroppable($target);
 
             // + paste next drop layout and init events
-            $target.append(Templates[blockType]);
+            $target.append(Page.templates[blockType]);
             if(blockType === 'columns'){
                 Layouts.publish('innerColumnsEvents:layouts', $target);
             }
@@ -77,7 +77,7 @@
             if(!$target.hasClass('pb-inner-column')){
                 // add next block into general flow
                 if(!areActiveLayouts($thisFlow)){
-                    $thisFlow.append(Templates['parentLayout']);
+                    $thisFlow.append(Page.templates['parentLayout']);
                 }
                 Layouts.publish('attachDraggable:layouts', $thisFlow.find('.pb-layout'));
             }
@@ -121,7 +121,7 @@
 
 
     function addParentLayout(flow_s){
-        $(flow_s).append(Templates['parentLayout']);
+        $(flow_s).append(Page.templates['parentLayout']);
 
         // EditPanel.publish('init:editPanel',
         //     $(flow_s).children(),
@@ -171,10 +171,11 @@
     );
 
 
-    Layouts.subscribe('init:layouts', function(element_s)
+    Layouts.subscribe('init:layouts', function(flow_s)
         {//
+            $contentAllFlows = $(flow_s),
             addParentLayout($contentAllFlows);
-            Layouts.publish('attachDraggable:layouts', element_s);
+            Layouts.publish('attachDraggable:layouts', '.pb-layout');
         }//
     );
 
