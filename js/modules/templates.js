@@ -1,14 +1,15 @@
-var Page = (function(){
+var Page = (function () {
     var self = this;
     return {
         $content: $('.pb-content'),
-        
-        templates:{
+
+        templates: {
             parentLayout: $('#pbTmpLayout').html().trim(),
             text: $('#pbTmpText').html().trim(),
             image: $('#pbTmpImage').html().trim(),
             columns: $('#pbTmpColumns').html().trim(),
             editPanel: $('#pbTmpEditPanel').html().trim(),
+            pageScheme: $('#pbPageScheme').html().trim()
         }
 
 

@@ -280,6 +280,29 @@ body{
 }
 /* END available blocks to drop*/
 
+/* page scheme */
+.pb-page-scheme {
+	position: fixed;
+	top: 60px;
+	left: 20px;
+	padding: 10px;
+	background: #eee;
+	border-radius: 5px;
+}
+
+.pb-page-scheme button {}
+
+.pb-page-scheme button:hover {
+	cursor: pointer;
+}
+
+.pb-page-scheme button[aria-pressed="false"] {}
+
+.pb-page-scheme button[aria-pressed="true"] {
+	cursor: not-allowed;
+	border: 1px solid black;
+}
+/* END page scheme */
 
 
 /* previews content blocks */
