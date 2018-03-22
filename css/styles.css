@@ -23,8 +23,21 @@ body{
 	-khtml-user-drag: element;
 	-webkit-user-drag: element;
 
-	cursor: move;
 }
+
+[draggable]:hover,
+.pb-element:hover {
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+	cursor: grab;
+}
+
+/* [draggable]:active,
+.pb-element:active {
+	cursor: -moz-grabing;
+	cursor: -webkit-grabing;
+	cursor: grabing;
+} */
 
 .pb-content {
 	width: 786px;
@@ -87,9 +100,13 @@ body{
 /* END static-preview items */
 
 
-/* .ui-draggable-dragging{
-	z-index: 9999;
-} */
+[draggable]:active,
+.pb-element:active,
+.ui-draggable-dragging:hover {
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+}
 
 /* drop layouts */
 .pb-layout {
