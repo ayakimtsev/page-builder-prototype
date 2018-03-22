@@ -11,39 +11,57 @@
         return typeof result !== 'undefined';
     };
 
-    function chooseBehavior($ths, type){
+    function chooseBehavior($editLink, type){
+        var $editPanel = $editLink.parent('.pb-editPanel'),
+            $flow = $editLink.closest('.pb-content-flow');
+
         switch (type){
             case 'edit':
-                console.log('edit init');
+                console.log('open edit/options popup');
             break;
             case 'delete':
-                $ths.click(function(e){
+                $editLink.click(function(e){
                     e.preventDefault();
-
-                    // if($ths.parent('.pb-layout[data-type=full]').length){
-                    //     var $aim = $ths.parent('.pb-layout[data-type=full]:not(:first-child:last-child)');
-                    //     $aim.remove();
-                    // } else
-                    if($ths.closest('.pb-inner-column').length){
-                        $ths.closest('.pb-inner-column')
+                    
+                    if($editPanel.parent('.pb-layout[data-type=full]').length){
+                         var $aim = $editPanel.parent('.pb-layout[data-type=full]:not(:first-child:last-child)');
+                         $aim.add($editPanel.siblings('.pb-layout[data-type=content]'));
+                         $aim.remove();
+                    } else if($editLink.closest('.pb-inner-column').length){
+                        $editLink.closest('.pb-inner-column')
                                 .removeClass('state-dropped ui-droppable-active')
                                 .droppable("enable");
                     } else {
-                        $ths.parents('.pb-layout') 
+                        $editLink.parents('.pb-layout') 
                                 .removeClass('state-dropped ui-droppable-active')
                                 .droppable("enable");
 
 
-                        $ths.closest('.pb-layout').add($ths.closest('.pb-layout').children('.pb-layout'))
+                        $editLink.closest('.pb-layout').add($editLink.closest('.pb-layout').children('.pb-layout'))
                                 .removeClass('state-dropped ui-droppable-active')
                                 .droppable("enable");
                                 
                     }
-                    $ths.closest('.pb-preview').remove();
+                    $editLink.closest('.pb-preview').remove();
+                });
+            break;
+
+            case 'sort':
+                // debugger;
+                $flow.sortable({
+                    //connectToSortable: $flow,
+                    revert: false,
+                    tolerance: "pointer",
+                    containment:"parent",
+                    opacity: 0.75,
+                    // forceHelperSize: true,
+                    // forcePlaceholderSize:true,
+                    //revertDuration: 0,
+                    handle:'[data-type="sort"]'
                 });
             break;
             case 'move':
-                $ths.draggable({
+                $editLink.draggable({
                     start: function( event, ui ) {
                         var $current = $(event.target);
                             $preview = $current.closest('.pb-preview:not(.pb-preview-columns), .pb-layout');

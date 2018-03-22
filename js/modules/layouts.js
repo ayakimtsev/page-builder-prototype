@@ -76,7 +76,7 @@
             if(!$target.hasClass('pb-inner-column')){
                 // add next block into general flow
                 if(!areActiveLayouts($thisFlow)){
-                    $thisFlow.append(Page.templates['parentLayout']);
+                    addParentLayout($thisFlow);
                 }
                 Layouts.publish('attachDraggable:layouts', $thisFlow.find('.pb-layout'));
             }
@@ -113,19 +113,25 @@
             $target.find('a').on('click', function(e){
                 e.preventDefault();
                 DevicesNav.show('desktop');
+                
                 createInnerColumns($(this), $(this).closest('.pb-preview'));
             });
         }//
     );
 
 
-    function addParentLayout(flow_s){
+    function attachEditPanel(block, buttons){
+        EditPanel.publish('init:editPanel',
+            $(block),
+            buttons || ['edit','delete', 'move']
+        );
+    }
+
+    function addParentLayout(flow_s,){
+        var $flow = $(flow_s);
         $(flow_s).append(Page.templates['parentLayout']);
 
-        // EditPanel.publish('init:editPanel',
-        //     $(flow_s).children(),
-        //     ['delete', 'move']
-        // );
+        attachEditPanel($flow.children(':not(.ui-droppable)'), ['delete', 'sort']);
     };
 
     function areActiveLayouts($flow){
