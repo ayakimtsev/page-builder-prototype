@@ -32,7 +32,6 @@
         };
     }
 
-
     Mediator.installTo = function(obj) {
         obj.subscribe = this.subscribe;
         obj.publish = this.publish;

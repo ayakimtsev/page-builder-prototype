@@ -5,7 +5,7 @@
 
 
 !function(window){
-    var DevicesNav = window.DevicesNav = {},
+    var DevicesNav = {},
         $content = Page.$content;
         
     Mediator.installTo(DevicesNav);
@@ -21,7 +21,7 @@
         $('.pb-devices .pb-devices-'+ device).trigger('click');
     }
 
-    DevicesNav.show = function(device){
+    DevicesNav.subscribe('show:devicesNav', function(device){
         switch(device){
             case 'desktop':
             case 'tablet':
@@ -29,9 +29,10 @@
                 triggerClick(device);
             break;
             default:
-                console.warn('Please recheck the parametr which passing into the function!');
+                console.warn('Please recheck the parameter which passing into the function!');
         }
-    };
+    });
+
 
     DevicesNav.subscribe("init:devicesNav", function(element_s) {
         var $deviceLinks = $('.pb-devices > a');

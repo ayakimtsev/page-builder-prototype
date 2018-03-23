@@ -2,7 +2,7 @@
 // init:elements
 
 !function(window){
-    //var Elements = window.Elements = {};
+    //var Elements = {};
 
     Mediator.subscribe("init:elements", function(element_s) {
         $(element_s).each(function(){

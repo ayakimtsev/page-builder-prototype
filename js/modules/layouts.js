@@ -1,5 +1,5 @@
 !function(window){
-    var Layouts = window.Layouts = {},
+    var Layouts = {},
         $contentAllFlows;
 
     Mediator.installTo(Layouts);
@@ -8,9 +8,10 @@
 
     Layouts.subscribe('highlight:layouts', function(event, ui)
         {//
-            DevicesNav.show('desktop');
-                        
             var blockType = $(ui.draggable).attr('data-type');
+
+
+            Mediator.publish('show:devicesNav','desktop');
             if(blockType == "columns") $contentAllFlows.addClass('ui-prevent-nested-active');
         }//
     );
@@ -27,7 +28,7 @@
         
         //disable target layout and add state class
         $target.droppable('disable')
-                .addClass('state-dropped');
+               .addClass('state-dropped');
     }
     function enableParentDroppable($target){
          if($target.closest('[data-type="inner"]').length){
@@ -68,7 +69,7 @@
 
             // add edit panel
             var panelContent = blockType == 'columns' ? ['delete', 'move'] : ['edit', 'delete', 'move'];
-            EditPanel.publish('init:editPanel',
+            Mediator.publish('init:editPanel',
                 $target.find('.pb-preview-' + blockType),
                 panelContent
             );
@@ -112,7 +113,7 @@
         {//
             $target.find('a').on('click', function(e){
                 e.preventDefault();
-                DevicesNav.show('desktop');
+                Mediator.publish('show:devicesNav','desktop');
                 
                 createInnerColumns($(this), $(this).closest('.pb-preview'));
             });
@@ -121,7 +122,7 @@
 
 
     function attachEditPanel(block, buttons){
-        EditPanel.publish('init:editPanel',
+        Mediator.publish('init:editPanel',
             $(block),
             buttons || ['edit','delete', 'move']
         );
@@ -129,8 +130,9 @@
 
     function addParentLayout(flow_s,){
         var $flow = $(flow_s);
-        $(flow_s).append(Page.templates['parentLayout']);
 
+
+        $(flow_s).append(Page.templates['parentLayout']);
         attachEditPanel($flow.children(':not(.ui-droppable)'), ['delete', 'sort']);
     };
 
@@ -144,7 +146,7 @@
                 .not('.ui-droppable')
                 .droppable({
                     greedy: true,
-                    accept:'.pb-element, .pb-opts-link[data-type="move"]',
+                    accept:'.pb-element, .pb-preview:not(.pb-preview-columns) .pb-opts-link[data-type="move"]',
                     tolerance: 'intersect',
                     activate: function( event, ui) {
                         Layouts.publish('highlight:layouts', event, ui);
@@ -157,8 +159,8 @@
                             $oldParent = $draggable.closest('.pb-preview, .pb-inner-column'),
                             $target = $(event.target);
 
+
                         enableParentDroppable($oldParent);
-                            
                         if($draggable.attr('data-type') === 'move'){
                             $draggable.closest('.pb-preview, .pb-inner-column').prependTo($target);
                             disableParentDroppable($target);
