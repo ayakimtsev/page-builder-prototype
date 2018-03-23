@@ -85,7 +85,7 @@
             Layouts.publish('attachDraggable:layouts', $thisFlow.find('.pb-layout'));
         }
         Layouts.publish('attachDraggable:layouts', $thisFlow.find('.pb-layout'));
-    };//
+    });//
 
     function getColumnsTemlate(_cntColumns) {
         var _columnsTemlate = '';
