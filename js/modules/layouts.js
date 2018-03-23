@@ -76,7 +76,7 @@
             }
 
             // add edit panel
-            var panelContent = blockType == 'columns' ? ['delete', 'move'] : ['options', 'delete', 'move'];
+            var panelContent = blockType == 'columns' ? ['options','delete', 'move'] : ['edit', 'delete', 'move'];
             Mediator.publish('init:editPanel',
                 $target.find('.pb-preview-' + blockType),
                 panelContent
@@ -110,10 +110,27 @@
         var cntColumns = parseInt( $elm.attr('data-columns') ),
             columnsTemlate = getColumnsTemlate(cntColumns);
 
+        $target.children('.pb-preview-columns-box').hide();
 
-        $target.children(':not(.pb-editPanel)').hide();
-        $target.append(columnsTemlate);
+        var $existColumns = $target.find('.pb-columns-layout').show();
+        if($existColumns.length){
+            var exitCnt = parseInt($existColumns.attr('data-columns'));
+            
+            if(exitCnt < cntColumns){
+                do{
+                    $existColumns.append('<div class="pb-inner-cell"><div class="pb-inner-column pb-layout" data-type="inner"></div></div>');
+                    exitCnt+=1;
+                }
+                while(exitCnt > cntColumns);
+            } else if(exitCnt > cntColumns){
+                //$existColumns.children(':')
+            }
 
+            $existColumns.attr('data-columns', cntColumns);
+        } else{
+            $target.append(columnsTemlate);
+        }
+        
         Layouts.publish('attachDraggable:layouts', $target.find('.pb-layout'));
     }
 

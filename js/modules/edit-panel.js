@@ -18,7 +18,12 @@
             
         switch (type){
             case 'options':
-                //console.log('open options popup');
+                $editLink.click(function(e){
+                    e.preventDefault();
+                    var $previewBlock = $editPanel.parent('.pb-preview-columns');
+                    $previewBlock.children('.pb-columns-layout').hide();
+                    $previewBlock.children('.pb-preview-columns-box').show();
+                });
             break;
 
             case 'width':
@@ -172,5 +177,4 @@
             refreshWidthButton(event, ui);
         }//
     );
-
 }();
