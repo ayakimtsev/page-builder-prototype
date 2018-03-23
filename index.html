@@ -6,6 +6,7 @@
 
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.css"/>
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.structure.css"/>
+        <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.theme.css"/>
         <link type="text/css" rel="stylesheet" href="css/font-awesome.css"/>
         <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     </head>
@@ -15,46 +16,8 @@
             <a href="#" class="pb-devices-tablet fa fa-tablet"></a>
             <a href="#" class="pb-devices-mobile fa fa-mobile"></a>
         </nav>
-        <div class="pb-content">
-            <div class="pb-header">
-                Header preview
-            </div>
-            
-            <!-- <div class="pb-menu">
-                Menu
-            </div> -->
-
-            <div class="pb-content-flow">
-                <!-- <div class="pb-layout" data-type="full">
-                    <div class="pb-layout" data-type="content"></div>
-                </div> -->
-            </div>
-
-            <div class="pb-area-disabled">
-                Middle side, here is some static content preview.
-            </div>
-
-            <div class="pb-content-flow">
-                <!-- <div class="pb-layout" data-type="full">
-                    <div class="pb-layout" data-type="content"></div>
-                </div> -->
-            </div>
-
-            
-            <!-- <div class="pb-sitemap">
-                Sitemap
-            </div> -->
-            
-            <div class="pb-footer">
-                Footer preview
-            </div>
-            
-            <div class="pb-page-scheme">
-                <button aria-pressed="true">Flexi page</button>
-                <button aria-pressed="false">PDP</button>
-                <button aria-pressed="false">PLP</button>
-            </div>
-
+        <div class="pb-toolbar">
+            <!-- Elements list -->
             <div class="pb-elements-list">
                 <div class="pb-element fa fa-align-justify" data-type="text" text="Text block">
                     <!-- Text -->
@@ -66,28 +29,41 @@
                     <!-- Columns -->
                 </div>
             </div>
+
+            <!-- Page scheme settings -->
+            <div class="pb-page-scheme">
+                <div>Page scheme:</div>
+                <select id="pageSchemeSwitcher">
+                    <option value="flexi-page" selected>Flexi page</option>
+                    <option value="product-details-page">Product details page (PDP)</option>
+                    <option value="product-list-page">Product list page (PLP)</option>
+                </select>
+                <div>Test:</div>
+                <button id="clear">Clear</button>
+            </div>
         </div>
 
-        <!-- <script id="" type="text/javascript">
-            var pageBuilderSavedLayout = {
+        <div class="pb-content"></div>
 
-            };
+        <!-- OLD pb-content -->
+        <!-- <div class="pb-content">
+            <div class="pb-header">
+                Header preview
+            </div>
+            
+            <div class="pb-content-flow"></div>
 
-            var PageBuilderBlocks = {
-                'text': {
-                    label:'Text',
-                    template:'#pbTmpText',
-                    icon: 'fa fa-image'
-                },
-                'image': {
-                    label:'Image',
-                    template:'#pbTmpImage',
-                    icon: 'fa fa-image'
-                }
-            }
-        </script> -->
+            <div class="pb-area-disabled">
+                Middle side, here is some static content preview.
+            </div>
 
-        
+            <div class="pb-content-flow"></div>
+            
+            <div class="pb-footer">
+                Footer preview
+            </div>
+        </div> -->
+
         <script id="pbTmpLayout" type="text/template">
             <div class="pb-layout" data-type="full">
                 <div class="pb-layout" data-type="content"></div>
@@ -150,8 +126,32 @@
             </div>
         </script>
 
-        <script id="pbPageScheme" type="text/template">
-            <!-- Body of page scheme switcher here... -->
+        <script id="content" type="text/template">
+            <div class="pb-content-flow"></div>
+        </script>
+
+        <script id="sana-header" type="text/template">
+            <div class="pb-header">
+                Sana Header
+            </div>
+        </script>
+
+        <script id="sana-footer" type="text/template">
+            <div class="pb-footer">
+                Sana Footer
+            </div>
+        </script>
+
+        <script id="product-details-header" type="text/template">
+            <div class="pb-header">
+                Product details header
+            </div>
+        </script>
+
+        <script id="product-list-middle" type="text/template">
+            <div class="pb-header">
+                Product list middle
+            </div>
         </script>
 
         <!-- libs -->

@@ -8,8 +8,7 @@ var Page = (function () {
             text: $('#pbTmpText').html().trim(),
             image: $('#pbTmpImage').html().trim(),
             columns: $('#pbTmpColumns').html().trim(),
-            editPanel: $('#pbTmpEditPanel').html().trim(),
-            pageScheme: $('#pbPageScheme').html().trim()
+            editPanel: $('#pbTmpEditPanel').html().trim()
         }
 
 

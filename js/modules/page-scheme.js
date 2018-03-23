@@ -1,27 +1,106 @@
 !function () {
     var PageScheme = window.PageScheme = {};
 
-    var buttons = $('button');
+    Mediator.installTo(PageScheme);
 
-    function resetButtonsState() {
-        buttons.each(function (index, button) {
-            $(button).attr('aria-pressed', false);
-        });
+    var clearButton = $('#clear');
+    clearButton.button();
+    var schemeSwitcher = $('#pageSchemeSwitcher');
+    schemeSwitcher.selectmenu();
+
+    var testBlueprints = {
+        'flexi-page': [
+            {
+                capture: 'sana-header',
+                editable: false
+            },
+            {
+                capture: 'content',
+                editable: true
+            },
+            {
+                capture: 'sana-footer',
+                editable: false
+            }
+        ],
+        'product-details-page': [
+            {
+                capture: 'sana-header',
+                editable: false
+            },
+            {
+                capture: 'product-details-header',
+                editable: false
+            },
+            {
+                capture: 'content',
+                editable: true
+            },
+            {
+                capture: 'sana-footer',
+                editable: false
+            }
+        ],
+        'product-list-page': [
+            {
+                capture: 'sana-header',
+                editable: false
+            },
+            {
+                capture: 'content',
+                editable: true
+            },
+            {
+                capture: 'product-list-middle',
+                editable: false
+            },
+            {
+                capture: 'content',
+                editable: true
+            },
+            {
+                capture: 'sana-footer',
+                editable: false
+            }
+        ]
+    };
+
+    var detectPageScheme = function () {
+        return schemeSwitcher.val();
     }
 
-    buttons.on('click', function () {
-        resetButtonsState();
+    var loadPageScheme = function () {
+        var schemeName = detectPageScheme();
+        var blueprint = testBlueprints[schemeName];
+        var fragment = $(document.createDocumentFragment());
 
-        $(this).attr('aria-pressed', true);
+        $.each(blueprint, function (index, scheme) {
+            fragment.append($('#' + scheme.capture).html().trim());
+        })
+        $('.pb-content').html('');
+        $('.pb-content').append(fragment);
+    }
+
+    schemeSwitcher.on('selectmenuchange', function () {
+        loadPageScheme();
+        Mediator.publish('init:elements', '.pb-elements-list .pb-element');
+        Mediator.publish('init:layouts', '.pb-content-flow');
     });
 
-    PageScheme.init = function (blueprints) {
-        // take blueprints objects
-        // 
-    };
+    clearButton.on('click', function () {
+        var content = $('.pb-content');
+        content.html('');
+    });
+
     /*  TODO:
         * retrieve needed dom elements
         * prepare page blueprints and use it for page-preview redrering
         * describe handlers on page scheme switch
     */
+    PageScheme.subscribe('init:loadPageScheme', function () {
+        loadPageScheme();
+        Mediator.publish('init:elements', '.pb-elements-list .pb-element');
+        Mediator.publish('init:layouts', '.pb-content-flow');
+    });
+
 }();
