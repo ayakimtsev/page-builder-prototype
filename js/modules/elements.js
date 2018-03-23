@@ -1,8 +1,8 @@
 // FUNCTIONS for Elements
 // init:elements
 
-!function (window) {
-    //var Elements = window.Elements = {};
+!function(window){
+    //var Elements = {};
 
     Mediator.subscribe("init:elements", function (element_s) {
         $(element_s).each(function () {
