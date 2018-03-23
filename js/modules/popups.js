@@ -2,13 +2,64 @@
 // init:elements
 
 !function(window){
-    var Popups = {};
+    var Popups = {},
+        $body = $('body');
 
     Mediator.installTo(Popups);
 
+    var templatesTypes = {
+        toogler:{
+            html:''
+        },
+        input:{
+            html:''
+        },
+        file:{
+            html:''
+        },
+        editor:{
+            html:''
+        },
+    };
 
-    Popups.subscribe("show:popups", function(){
 
+    var popupTypes = {
+        full:{
+            text: 'Options for row',
+            options:[
+                {
+                    name:'Full width',
+                    type:'toogler'
+                }
+            ]
+        },
+
+        text:{
+
+        },
+        image:{
+
+        },
+        columns:{
+
+        },
+        usp:{
+
+        }
+
+    }
+
+
+    function addPopupHTML($aim){
+
+        
+    }
+
+
+
+
+    Popups.subscribe("open:popup", function(blockName, data){
+        $body.append(Page.templates['popup']);
 
     });
 
@@ -17,9 +68,24 @@
         
     // });
 
+    function closePopup($startPoint){
+        setTimeout(function(){
+            $startPoint.closest('.pb-popupBox').remove();
+        },50);
+    }
 
 
-    // Popups.subscribe("init:popups", function(element_s) {
-        
-    // });
+    Popups.subscribe("init:popups", function() {
+        $body
+            .on('submit.optsPopup', '#pbPopup form', function(e){
+                e.preventDefault();
+
+                var data = $(this).serialize();
+                console.log(data);
+                closePopup($(this));
+            })
+            .on('click.closePopup', '#pbPopup .pb-popup-back', function(){
+                closePopup($(this));
+            });
+    });
 }(window);

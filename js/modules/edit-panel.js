@@ -17,35 +17,42 @@
 
             
         switch (type){
-            case 'edit':
-                console.log('open edit/options popup');
+            case 'options':
+                //console.log('open options popup');
             break;
-            
+
+            case 'width':
+                $editLink.click(function(e){
+                    e.preventDefault();
+                    var $fullParent = $editPanel.parent('.state-dropped[data-type="full"]');
+                        $contentParent = $editPanel.siblings('[data-type="content"]')
+
+                    if($fullParent.length){
+                        $editLink.removeClass('active');
+                        $fullParent.removeClass('state-dropped');
+                        $contentParent.addClass('state-dropped');
+                        $editPanel.siblings('.pb-preview').prependTo($contentParent);
+                    } else if($contentParent.length){
+                        $editLink.addClass('active');
+                        $fullParent = $contentParent.parent();
+                        $fullParent.addClass('state-dropped');
+                        $contentParent.removeClass('state-dropped');
+                        $contentParent.children('.pb-preview').prependTo($fullParent);
+                    }
+                });
+            break;
+
+            case 'edit':
+                $editLink.click(function(e){
+                    e.preventDefault();
+                    Mediator.publish('open:popup');
+                });
+            break; 
 
             case 'delete':
                 $editLink.click(function(e){
                     e.preventDefault();
-                    
-                    if($editPanel.parent('.pb-layout[data-type=full]').length){
-                         var $aim = $editPanel.parent('.pb-layout[data-type=full]:not(:first-child:last-child)');
-
-
-                         $aim.add($editPanel.siblings('.pb-layout[data-type=content]'));
-                         $aim.remove();
-                    } else if( $editLink.closest('.pb-inner-column').length ){
-                        $editLink.closest('.pb-inner-column')
-                                 .removeClass('state-dropped ui-droppable-active')
-                                 .droppable("enable");
-                    } else {
-                        $editLink.parents('.pb-layout') 
-                                 .removeClass('state-dropped ui-droppable-active')
-                                 .droppable("enable");
-
-                        $editLink.closest('.pb-layout').add($editLink.closest('.pb-layout').children('.pb-layout'))
-                                 .removeClass('state-dropped ui-droppable-active')
-                                 .droppable("enable");
-                    }
-                    $editLink.closest('.pb-preview').remove();
+                    EditPanel.publish('delete:editPanel', $editLink, $editPanel);
                 });
             break;
 
@@ -56,13 +63,16 @@
                     tolerance: "pointer",
                     containment:"parent",
                     opacity: 0.75,
-                    handle:'[data-type="sort"]'
+                    handle:'[data-type="sort"]',
+                    start: function(event, ui){
+                        //ui.placeholder.height(ui.helper.height());
+                    }
                 });
             break;
 
 
             case 'move':
-                $editLink.draggable({
+                $('.pb-preview').draggable({
                     start: function( event, ui ) {
                         var $current = $(event.target);
                             $preview = $current.closest('.pb-preview, .pb-layout');
@@ -81,11 +91,36 @@
                     },
                     revert: true,
                     revertDuration: 0,
-                    opacity: 1
+                    opacity: 0.75,
+                    handle: '[data-type="move"]'
                 });
             break;
         }
     };
+
+
+    EditPanel.subscribe('delete:editPanel', function($deleteLink, $editPanel){
+        if($editPanel.parent('.pb-layout[data-type=full]').length){
+            var $aim = $editPanel.parent('.pb-layout[data-type=full]:not(:first-child:last-child)');
+
+
+            $aim.add($editPanel.siblings('.pb-layout[data-type=content]'));
+            $aim.remove();
+       } else if( $deleteLink.closest('.pb-inner-column').length ){
+           $deleteLink.closest('.pb-inner-column')
+                    .removeClass('state-dropped ui-droppable-active')
+                    .droppable("enable");
+       } else {
+           $deleteLink.parents('.pb-layout') 
+                    .removeClass('state-dropped ui-droppable-active')
+                    .droppable("enable");
+
+           $deleteLink.closest('.pb-layout').add($deleteLink.closest('.pb-layout').children('.pb-layout'))
+                    .removeClass('state-dropped ui-droppable-active')
+                    .droppable("enable");
+       }
+       $deleteLink.closest('.pb-preview').remove();
+    });
 
 
     EditPanel.subscribe('init:editPanel', function(elements, availButtons)
@@ -105,6 +140,36 @@
                 
                 chooseBehavior($ths, type);
             });
+        }//
+    );
+
+    EditPanel.subscribe('refresh:editPanel', function($target, button){
+        switch(button){
+            case 'width':
+            break;
+            default:
+                console.warn('EditPanel says - no button');
+        }
+
+    });
+
+
+
+    function refreshWidthButton(event, ui){
+        var $target = $(event.target),
+        $editPanel = $target.children('.pb-editPanel') || $target.siblings('.pb-editPanel');
+    
+        if($target.is('[data-type="full"]')){
+            $editPanel.find('[data-type="width"]').addClass('active');
+        } else if($target.is('[data-type="content"]')){
+            $editPanel.find('[data-type="width"]').removeClass('active');
+        }
+
+    }
+
+    EditPanel.subscribe('refresh:EditPanel-width', function(event, ui)
+        {//
+            refreshWidthButton(event, ui);
         }//
     );
 

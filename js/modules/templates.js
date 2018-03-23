@@ -9,6 +9,7 @@ var Page = (function(){
             image: $('#pbTmpImage').html().trim(),
             columns: $('#pbTmpColumns').html().trim(),
             editPanel: $('#pbTmpEditPanel').html().trim(),
+            popup: $('#pbTmpPopup').html().trim()
         }
 
 

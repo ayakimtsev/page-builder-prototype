@@ -137,10 +137,32 @@
         </script>
         <script id="pbTmpEditPanel" type="text/template">
             <div class="pb-editPanel">
+                <a href='#' data-type='width' class='pb-opts-link fa fa-arrows-h'></a>
                 <a href='#' data-type='edit' class='pb-opts-link fa fa-edit'></a>
                 <a href='#' data-type='delete' class='pb-opts-link fa fa-trash'></a>
                 <a href='#' data-type='sort' class='pb-opts-link fa fa-sort'></a>
                 <a href='#' data-type='move' class='pb-opts-link fa fa-arrows'></a>
+            </div>
+        </script>
+        <script id="pbTmpPopup" type="text/template">
+            <div class='pb-popupBox' id='pbPopupBox'>
+                <div class="pb-popup" id="pbPopup">
+                    <!-- <button class="pb-popup-close"></button> -->
+                    <div class="pb-popup-inside">
+                        <div class='pb-popup-msg'></div>
+                        <form>
+                            <div class='pb-options-flow' id='pbOptionsFlow'></div>
+                            <div class='pb-popup-footer'>
+                                <button type="button" class="pb-popup-btn pb-popup-back">
+                                    <i class='fa fa-undo'></i>
+                                </button>
+                                <button type="submit" class="pb-popup-btn pb-popup-agree">
+                                    <i class='fa fa-check'></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </script>
 
@@ -159,6 +181,7 @@
 
         <script src="js/modules/elements.js"></script>
         <script src="js/modules/layouts.js"></script>
+        <script src="js/modules/popups.js"></script>
 
         <!-- init -->
         <script src="js/main.js"></script>
