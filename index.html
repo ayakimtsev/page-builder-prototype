@@ -6,6 +6,27 @@
 
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.css"/>
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.structure.css"/>
+
+        <link rel="stylesheet" href="css/libs/froala/froala_editor.css">
+        <link rel="stylesheet" href="css/libs/froala/froala_style.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/code_view.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/draggable.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/colors.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/emoticons.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/image_manager.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/image.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/line_breaker.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/table.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/char_counter.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/video.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/fullscreen.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/file.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/quick_insert.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/help.css">
+        <link rel="stylesheet" href="css/libs/froala/third_party/spell_checker.css">
+        <link rel="stylesheet" href="css/libs/froala/plugins/special_characters.css">
+
+
         <link type="text/css" rel="stylesheet" href="css/font-awesome.css"/>
         <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     </head>
@@ -79,7 +100,47 @@
                 }
             }
         </script> -->
+        <script id="pbTmpPopupFile" type="text/template">
+            <div class="form-group row-imagepath">
+                <label class='pb-label'>Image*</label>
+                
+                <div class="imagepath-selector">
+                    <div class="image-preview" style="display: none;">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                    </div>
+                    <div class="input-group">
+                        <input autocomplete="off" class="form-control pb-popup-file" type="text" value="">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-secondary btn-deselect" disabled="">
+                                <i class="fa fa-trash-o"></i>
+                                Deselect
+                            </button>
+                            <button type="button" class="btn btn-default btn-select">
+                                <i class="fa fa-picture-o"></i>
+                                Select image
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </script>
+        
+        <script id="pbTmpPopupInput" type="text/template">
+            <div class="form-group row-alttext">
+                <label class='pb-label'>Alternate text</label>
+                <input class="form-control pb-popup-input" type="text" value="" aria-invalid="false">
+            </div>
+        </script>
 
+        <script id="pbTmpPopupEditor" type="text/template">
+            <div class="form-group row-alttext">
+                <label class='pb-label'>Alternate text</label>
+                <textarea class="form-control pb-popup-textarea" value="" aria-invalid="false"></textarea>
+                <script type='text/javascript'>
+                    $('.pb-popup-textarea').froalaEditor();
+                </script>
+            </div>
+        </script>
         
         <script id="pbTmpLayout" type="text/template">
             <div class="pb-layout" data-type="full">
@@ -151,8 +212,9 @@
                 <div class="pb-popup" id="pbPopup">
                     <!-- <button class="pb-popup-close"></button> -->
                     <div class="pb-popup-inside">
-                        <div class='pb-popup-msg'></div>
-                        <form>
+                        <!-- <div class='pb-popup-msg'></div> -->
+                        <h2 class='pb-popup-title'></h2>
+                        <form id='pbPoupForm' name='pbPoupForm'>
                             <div class='pb-options-flow' id='pbOptionsFlow'></div>
                             <div class='pb-popup-footer'>
                                 <button type="button" class="pb-popup-btn pb-popup-back">
@@ -171,6 +233,40 @@
         <!-- libs -->
         <script src="js/libs/jquery-3.1.1.min.js"></script>
         <script src="js/libs/jquery-ui.js"></script>
+
+
+        <script src="js/libs/froala/froala_editor.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/align.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/char_counter.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/code_beautifier.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/code_view.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/colors.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/draggable.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/emoticons.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/entities.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/file.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/font_size.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/font_family.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/fullscreen.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/image.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/image_manager.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/line_breaker.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/inline_style.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/link.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/lists.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/paragraph_format.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/paragraph_style.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/quick_insert.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/quote.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/table.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/save.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/url.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/video.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/help.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/print.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/special_characters.min.js"></script>
+        <script type="text/javascript" src="js/libs/froala/plugins/word_paste.min.js"></script>
+
 
 
         <!-- presets -->
