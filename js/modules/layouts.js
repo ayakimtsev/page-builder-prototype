@@ -51,9 +51,7 @@
             $target.siblings('.pb-layout')
                         .removeClass('state-dropped ui-droppable-active')
                         .droppable("enable");
-
         }
-
     };
 
     Layouts.subscribe('drop:layouts', function(event, ui)
@@ -71,6 +69,7 @@
 
             // + paste next drop layout and init events
             $target.append(Page.templates[blockType]);
+            $target.find('.pb-preview-' + blockType).attr('data-blockType', blockType);
             if(blockType === 'columns'){
                 Layouts.publish('innerColumnsEvents:layouts', $target);
             }
@@ -114,16 +113,17 @@
 
         var $existColumns = $target.find('.pb-columns-layout').show();
         if($existColumns.length){
-            var exitCnt = parseInt($existColumns.attr('data-columns'));
-            
-            if(exitCnt < cntColumns){
+            var existCnt = parseInt($existColumns.attr('data-columns'));
+           
+
+            if(existCnt < cntColumns){
                 do{
                     $existColumns.append('<div class="pb-inner-cell"><div class="pb-inner-column pb-layout" data-type="inner"></div></div>');
-                    exitCnt+=1;
+                    existCnt+=1;
                 }
-                while(exitCnt > cntColumns);
-            } else if(exitCnt > cntColumns){
-                //$existColumns.children(':')
+                while(existCnt < cntColumns);
+            } else if(existCnt > cntColumns){
+                $existColumns.children(':not(:nth-of-type(-n+'+cntColumns+'))').remove();
             }
 
             $existColumns.attr('data-columns', cntColumns);

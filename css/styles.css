@@ -137,7 +137,7 @@ body{
 
 .pb-layout > .pb-layout{
 	max-width: 100%;
-	width: 580px;
+	width: 610px;
 	z-index: 1;
 	margin:0 auto;
 	min-height: 148px;
@@ -206,7 +206,7 @@ body{
 
 	.pb-layout[data-type="full"]::after{
 		left: auto;
-		right: 25px;
+		right: 18px;
 	}
 	/**/
 
@@ -484,7 +484,7 @@ body{
 	line-height: 18px;
 	height: 18px;
 	min-width: 18px;
-	margin: 0 2px;
+	margin: 0;
 	border-radius: 8px;
 	text-align: center;
 
@@ -648,6 +648,7 @@ body{
 .pb-options-flow{
 	min-height: 40px;
 	padding: 10px 0;
+	text-align: left;
 }
 
 .pb-popup-btn{
@@ -676,7 +677,7 @@ body{
 }
 
 .pb-popup-btn:hover{
-	transform: scale(0.9);
+	transform: scale(0.95);
 }
 .pb-popup-back:hover{
 	background: #AA3939;

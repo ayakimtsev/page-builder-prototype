@@ -9,7 +9,13 @@ var Page = (function(){
             image: $('#pbTmpImage').html().trim(),
             columns: $('#pbTmpColumns').html().trim(),
             editPanel: $('#pbTmpEditPanel').html().trim(),
-            popup: $('#pbTmpPopup').html().trim()
+            popup: $('#pbTmpPopup').html().trim(),
+            blocks:{
+                input:$('#pbTmpPopupInput').html().trim(),
+                file:$('#pbTmpPopupFile').html().trim(),
+                link:$('#pbTmpPopupInput').html().trim(), // !!! the same as for input !!!
+                editor: $('#pbTmpPopupEditor').html().trim()
+            }
         }
 
 

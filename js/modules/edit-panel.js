@@ -21,8 +21,10 @@
                 $editLink.click(function(e){
                     e.preventDefault();
                     var $previewBlock = $editPanel.parent('.pb-preview-columns');
-                    $previewBlock.children('.pb-columns-layout').hide();
-                    $previewBlock.children('.pb-preview-columns-box').show();
+                    if($previewBlock.length){
+                        $previewBlock.children('.pb-columns-layout').hide();
+                        $previewBlock.children('.pb-preview-columns-box').show();
+                    }
                 });
             break;
 
@@ -50,7 +52,9 @@
             case 'edit':
                 $editLink.click(function(e){
                     e.preventDefault();
-                    Mediator.publish('open:popup');
+                    var $previewBlock = $editLink.closest('.pb-preview')
+                        blockType = $previewBlock.attr('data-blockType');
+                    Mediator.publish('open:popup', blockType, $previewBlock);
                 });
             break; 
 
