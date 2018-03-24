@@ -24,7 +24,6 @@
             options:[
                 {
                     name:'text',
-                    label:'Text',
                     type:'editor'
                 }
             ]
