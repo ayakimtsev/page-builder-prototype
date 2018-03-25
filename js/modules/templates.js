@@ -19,6 +19,10 @@ var Page = (function(){
             pageElements:{
                 full:'<div class="flexi-row"></div>',
                 content:'<div class="flexi-row center"></div>',
+                bs_row:'<div class="pb-columns-layout"></div>',
+                bs_cell:'<div class="pb-inner-cell"></div>',
+
+
                 image: $('#pbElementImage').html().trim(),
                 text:'<div class="html-wrapper fr-view"><div data-type="pb_html"></div></div>'
             }
