@@ -29,6 +29,7 @@
 
         <link type="text/css" rel="stylesheet" href="css/libs/font-awesome.css"/>
         <link type="text/css" rel="stylesheet" href="css/page-preview.css"/>
+        <link type="text/css" rel="stylesheet" href="css/copied.css"/>
         <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     </head>
     <body>
@@ -47,20 +48,14 @@
             </div> -->
 
             <div class="pb-content-flow">
-                <!-- <div class="pb-layout" data-type="full">
-                    <div class="pb-layout" data-type="content"></div>
-                </div> -->
             </div>
 
-            <div class="pb-area-disabled">
+            <!-- <div class="pb-area-disabled">
                 Middle side, here is some static content preview.
             </div>
 
             <div class="pb-content-flow">
-                <!-- <div class="pb-layout" data-type="full">
-                    <div class="pb-layout" data-type="content"></div>
-                </div> -->
-            </div>
+            </div> -->
 
             <div class="pb-elements-list">
                 <div class="pb-element fa fa-align-justify" data-type="text" text="Text block">
@@ -91,14 +86,19 @@
             <div class="pb-page-preview-title">Page preview</div>
             <a href="#" id="pbPreviewClose" class="pb-preview-close"></a>
 
-            <div class="pb-page-header">
-                page header
-            </div>
-            <div class="pb-page-content" id="pb-page-content">
 
-            </div>
-            <div class="pb-page-footer">
-                page footer
+            <div class="site">
+                <header class="pb-page-header">
+                    page header
+                </header>
+                <div class="content">
+                    <div class="pb-page-content">
+
+                    </div>
+                </div>
+                <footer class="pb-page-footer">
+                    page footer
+                </footer>
             </div>
         </div>
         <!-- <script id="" type="text/javascript">
@@ -257,6 +257,20 @@
 
 
         <!-- ELEMENTS FOR PAGE PRESENTATION -->
+        <script id="pbElementImage" type="text/template">
+            <div class="banner">
+                <div class="banner-full-width">
+                    <img data-type='pb_image' src="/content/noimage.png" alt="" style="">
+                </div>
+                <div class="banner-content">
+                    <h1 data-type='pb_title'>title</h1>
+                    <h2 data-type='pb_subtitle'>subtitle</h2>
+                    <a href="#" class="btn btn-big">
+                        <span class="btn-cnt" data-type='pb_btntitle'>btntitle</span>
+                    </a>
+                </div>
+            </div>
+        </script>
 
         <!-- END ELEMENTS FOR PAGE PRESENTATION -->
 

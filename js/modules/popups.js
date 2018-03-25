@@ -23,7 +23,7 @@
             dialogText: 'Options for "Text block"',
             options:[
                 {
-                    name:'text',
+                    name:'html',
                     type:'editor'
                 }
             ]
@@ -91,11 +91,14 @@
             $row.find('input, textarea').attr('name', 'pb_'+val.name)
                 
 
-            $row.find('textarea').froalaEditor();
-
             if(dataStr && dataStr.length) {
                 $row.find('input, textarea').val(dataStr[index].value);
+                $row.find('textarea').html(dataStr[index].value);
             }
+
+            $row.find('textarea')
+                        .html($row.find('textarea').val()||'')
+                        .froalaEditor();
         });
     });
 
