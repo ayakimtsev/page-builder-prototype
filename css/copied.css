@@ -66,7 +66,7 @@
 
 .pb-popupBox .input-group {
     position: relative;
-    display: table;
+    display: flex;
     border-collapse: separate;
 }
 
@@ -1695,23 +1695,23 @@ footer .font-h4 {
 
 @font-face {
     font-family: 'Pathway Gothic One';
-    src: url("../fonts/PathwayGothicOne.woff")
+    src: url("./fonts/PathwayGothicOne.woff")
 }
 
 @font-face {
     font-family: 'Open Sans';
-    src: url("../fonts/OpenSans-Regular.woff")
+    src: url("./fonts/OpenSans-Regular.woff")
 }
 
 @font-face {
     font-family: 'Open Sans';
-    src: url("../fonts/OpenSans-Italic.woff");
+    src: url("./fonts/OpenSans-Italic.woff");
     font-style: italic
 }
 
 @font-face {
     font-family: 'Open Sans';
-    src: url("../fonts/OpenSans-Bold.woff");
+    src: url("./fonts/OpenSans-Bold.woff");
     font-weight: bold
 }
 
@@ -2810,7 +2810,8 @@ ul.reset,p.reset {
     text-transform: uppercase;
     overflow: hidden;
     white-space: normal;
-    border-radius: 2px
+    border-radius: 2px;
+    color:#fff;
 }
 
 .site .btn .btn-cnt {
@@ -9958,4 +9959,15 @@ label .rdb input[type="radio"]:checked+ins:after{background-color:#1f7bc9}
 .carousel-image-s .hyp-thumbnail:hover .thumbnail:after{border-bottom:3px solid #1f7bc9}
 .carousel-image-s .slick-current .thumbnail{border:1px solid #1f7bc9}
 .banner h1,.banner h2{font-family:'Montserrat','Open Sans',sans-serif,sans-serif}
-.banner h1{font-size:48px;color:#fff}.banner h2{font-size:40px;color:#fff}@media(max-width:639px){.banner h1{font-size:calc(48px/2)}.banner h2{font-size:calc(40px/2)}.banner h1,.banner h2{color:#000}}.one-page-checkout .order-overview-section{border-color:#e6e6e6;background-color:#fcfcfc}@media screen and (max-width:639px){.one-page-checkout .order-overview-section{background-color:transparent}}.usp-list li,.service-info-text{font-family:'Pathway Gothic One',sans-serif;color:#4c4c4c;font-size:20px}
+.banner h1{font-size:48px;color:#fff}
+.banner h2{font-size:40px;color:#fff}
+@media(max-width:639px){
+    .banner h1{font-size:calc(48px/2)}
+    .banner h2{font-size:calc(40px/2)}
+    .banner h1,.banner h2{color:#000}}
+    .one-page-checkout .order-overview-section{border-color:#e6e6e6;background-color:#fcfcfc}
+@media screen and (max-width:639px){
+    .one-page-checkout .order-overview-section{background-color:transparent}
+}
+.usp-list li,
+.service-info-text{font-family:'Pathway Gothic One',sans-serif;color:#4c4c4c;font-size:20px}

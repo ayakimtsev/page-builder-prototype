@@ -27,18 +27,6 @@ var Page = (function(){
                 text:'<div class="html-wrapper fr-view"><div data-type="pb_html"></div></div>'
             }
         }
-
-
-        // getTemplate: function(name){
-        //     if(typeof self[name] === 'undefined'){
-        //         console.warn('There is not passed template - ' + name);
-        //         return '';
-        //     }
-        //     return self[name];
-        // },
-        // getEditButtons: function(name){
-
-        // }
     }
 })();
 

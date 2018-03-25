@@ -132,7 +132,7 @@
                     <div class="image-preview" style="display: none;">
                         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
                     </div>
-                    <div class="input-group">
+                    <label class="input-group file_upload">
                         <input autocomplete="off" class="form-control pb-popup-file" type="text" value="">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-secondary btn-deselect" disabled="">
@@ -143,8 +143,9 @@
                                 <i class="fa fa-picture-o"></i>
                                 Select image
                             </button>
+                            <input type="file" ccept=".gif,.jpg,.jpeg,.png">
                         </span>
-                    </div>
+                    </label>
                 </div>
             </div>
         </script>
@@ -266,8 +267,8 @@
                 <div class="banner-content">
                     <h1 data-type='pb_title'>title</h1>
                     <h2 data-type='pb_subtitle'>subtitle</h2>
-                    <a href="#" class="btn btn-big">
-                        <span class="btn-cnt" data-type='pb_btntitle'>btntitle</span>
+                    <a href="#" target="_blank" data-type='pb_link' class="btn btn-big">
+                        <span class="btn-cnt" data-type='pb_linktitle'>linktitle</span>
                     </a>
                 </div>
             </div>
@@ -284,6 +285,7 @@
         <!-- libs -->
         <script src="js/libs/jquery-3.1.1.min.js"></script>
         <script src="js/libs/jquery-ui.js"></script>
+        <script src="js/libs/file-picker.js"></script>
 
 
         <script src="js/libs/froala/froala_editor.min.js"></script>

@@ -47,15 +47,20 @@
                     type:'input'
                 },
                 {
+                    name:'linktitle',
+                    label:'Link title',
+                    type:'input'
+                },
+                {
                     name:'link',
                     label:'Link',
                     type:'link'
                 }
             ]
         },
-        columns:{
+        // columns:{
 
-        },
+        // },
         // usp:{
 
         // }
@@ -88,11 +93,11 @@
             
             $row = $popupFlow.children(':last-child');
             $row.find('.pb-label').text(val.label);
-            $row.find('input, textarea').attr('name', 'pb_'+val.name)
+            $row.find('input[type="text"], textarea').attr('name', 'pb_'+val.name)
                 
 
             if(dataStr && dataStr.length) {
-                $row.find('input, textarea').val(dataStr[index].value);
+              $row.find('input[type="text"], textarea').val(dataStr[index].value);
                 $row.find('textarea').html(dataStr[index].value);
             }
 
@@ -100,12 +105,10 @@
                         .html($row.find('textarea').val()||'')
                         .froalaEditor();
         });
+
+        initFileInput();
     });
 
-    // Popups.subscribe("hide:popups", function(){
-
-        
-    // });
 
     function closePopup($startPoint){
         setTimeout(function(){

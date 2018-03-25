@@ -54,16 +54,27 @@
             var name = dataContent.name,
                 value = dataContent.value;
             
-            
+
             switch(name){
                 case 'pb_image':
                     $tmpSub.find('[data-type="'+name+'"]').text(value);
+                    $tmpSub.find('img').attr('src', 'files/content/' + value);
                     break;
                 case 'pb_html':
                     $tmpSub.find('[data-type="'+name+'"]').html(value);
                     break;
                 default:
-                    $tmpSub.find('[data-type="'+name+'"]').text(value);
+                    if(name === 'pb_link'){
+                        if(value){
+                            $tmpSub.find('[data-type="'+name+'"]').attr('href', 'http://'+value);
+                        } else {
+                            $tmpSub.find('[data-type="'+name+'"]').hide();
+                        }
+                        
+                    } else {
+                        $tmpSub.find('[data-type="'+name+'"]').text(value);
+                    }
+                    
             }
         });
 
