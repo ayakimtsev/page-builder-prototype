@@ -83,16 +83,18 @@
             if(blockTemplate){
                 $popupFlow.append(blockTemplate);
             } else{
-                console.warn('Not template for row - ' + val.type + '!');
+                console.warn('No template for row - ' + val.type + '!');
             }
             
             $row = $popupFlow.children(':last-child');
             $row.find('.pb-label').text(val.label);
-            $row.find('input').attr('name', 'pb_'+val.name)
+            $row.find('input, textarea').attr('name', 'pb_'+val.name)
                 
 
+            $row.find('textarea').froalaEditor();
+
             if(dataStr && dataStr.length) {
-                $row.find('input').val(dataStr[index].value);
+                $row.find('input, textarea').val(dataStr[index].value);
             }
         });
     });

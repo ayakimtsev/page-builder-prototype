@@ -27,7 +27,8 @@
         <link rel="stylesheet" href="css/libs/froala/plugins/special_characters.css">
 
 
-        <link type="text/css" rel="stylesheet" href="css/font-awesome.css"/>
+        <link type="text/css" rel="stylesheet" href="css/libs/font-awesome.css"/>
+        <link type="text/css" rel="stylesheet" href="css/page-preview.css"/>
         <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     </head>
     <body>
@@ -71,6 +72,11 @@
                 <div class="pb-element fa fa-columns" data-type="columns" text="Columns block">
                     <!-- Columns -->
                 </div>
+
+                <a href="#" id='pbPreviewPage' class="pb-preview-page">
+                    <i class="fa fa-window-maximize"></i>
+                    PREVIEW
+                </a>
             </div>
 
             <!-- <div class="pb-sitemap">
@@ -81,7 +87,20 @@
                 Footer preview
             </div>
         </div>
+        <div id='pbPreviewBox' class="pb-preview-box">
+            <div class="pb-page-preview-title">Page preview</div>
+            <a href="#" id="pbPreviewClose" class="pb-preview-close"></a>
 
+            <div class="pb-page-header">
+                page header
+            </div>
+            <div class="pb-page-content" id="pb-page-content">
+
+            </div>
+            <div class="pb-page-footer">
+                page footer
+            </div>
+        </div>
         <!-- <script id="" type="text/javascript">
             var pageBuilderSavedLayout = {
 
@@ -100,6 +119,10 @@
                 }
             }
         </script> -->
+
+
+
+        <!-- OPTIONs POPUP TEMPLATES -->
         <script id="pbTmpPopupFile" type="text/template">
             <div class="form-group row-imagepath">
                 <label class='pb-label'>Image*</label>
@@ -124,23 +147,22 @@
                 </div>
             </div>
         </script>
-        
         <script id="pbTmpPopupInput" type="text/template">
             <div class="form-group row-alttext">
                 <label class='pb-label'>Alternate text</label>
                 <input class="form-control pb-popup-input" type="text" value="" aria-invalid="false">
             </div>
         </script>
-
         <script id="pbTmpPopupEditor" type="text/template">
             <div class="form-group row-alttext">
                 <textarea class="form-control pb-popup-textarea" value="" aria-invalid="false"></textarea>
-                <script type='text/javascript'>
-                    $('.pb-popup-textarea').froalaEditor();
-                </script>
             </div>
         </script>
-        
+        <!-- END OPTIONs POPUP TEMPLATES -->
+
+
+
+        <!-- PREVIEWS BLOCKS FOR PAGE BUILDER -->
         <script id="pbTmpLayout" type="text/template">
             <div class="pb-layout" data-type="full">
                 <div class="pb-layout" data-type="content"></div>
@@ -206,6 +228,7 @@
                 <a href='#' data-type='move' class='pb-opts-link fa fa-arrows'></a>
             </div>
         </script>
+        
         <script id="pbTmpPopup" type="text/template">
             <div class='pb-popupBox' id='pbPopupBox'>
                 <div class="pb-popup" id="pbPopup">
@@ -228,6 +251,20 @@
                 </div>
             </div>
         </script>
+        <!-- END PREVIEWS BLOCKS FOR PAGE BUILDER -->
+
+
+
+
+        <!-- ELEMENTS FOR PAGE PRESENTATION -->
+
+        <!-- END ELEMENTS FOR PAGE PRESENTATION -->
+
+
+
+
+
+
 
         <!-- libs -->
         <script src="js/libs/jquery-3.1.1.min.js"></script>
@@ -250,19 +287,16 @@
         <script type="text/javascript" src="js/libs/froala/plugins/image.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/image_manager.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/line_breaker.min.js"></script>
-        <script type="text/javascript" src="js/libs/froala/plugins/inline_style.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/link.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/lists.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/paragraph_format.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/paragraph_style.min.js"></script>
-        <script type="text/javascript" src="js/libs/froala/plugins/quick_insert.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/quote.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/table.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/save.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/url.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/video.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/help.min.js"></script>
-        <script type="text/javascript" src="js/libs/froala/plugins/print.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/special_characters.min.js"></script>
         <script type="text/javascript" src="js/libs/froala/plugins/word_paste.min.js"></script>
 
@@ -279,6 +313,7 @@
         <script src="js/modules/elements.js"></script>
         <script src="js/modules/layouts.js"></script>
         <script src="js/modules/popups.js"></script>
+        <script src="js/modules/page-preview.js"></script>
 
         <!-- init -->
         <script src="js/main.js"></script>
