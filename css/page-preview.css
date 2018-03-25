@@ -7,7 +7,9 @@
 	bottom: 0;
 	display: none;
 	z-index: 9999;
-	padding-top: 32px;
+    padding-top: 32px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .pb-page-preview-title{

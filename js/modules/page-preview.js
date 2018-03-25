@@ -41,7 +41,7 @@
                 data.push({
                     rowType:rowType,
                     columns:previewParentBlockType === 'columns',
-                    elements:elements
+                    elements:elements.reverse()
                 });
             });
 
@@ -132,7 +132,7 @@
     PagePreview.subscribe("init:pagePreview", function() {
         $('#pbPreviewPage').on('click.pagePreview', function(e){
             e.preventDefault();
-            $('html, body').css('overflow','hidden');
+            $('html, body').addClass('state-page-preview');
             $previewBox.show();
             var pageData = collectData($contentAllFlows);
 
@@ -149,7 +149,7 @@
         });
 
         $('#pbPreviewClose').on('click.pagePreview', function(e){
-            $('html, body').css('overflow','');
+            $('html, body').removeClass('state-page-preview');
             e.preventDefault();
             $previewBox.hide();
             clearPreviewContent();

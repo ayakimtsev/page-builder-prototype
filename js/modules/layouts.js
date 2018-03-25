@@ -153,7 +153,7 @@
         );
     }
 
-    function addParentLayout(flow_s,buttons){
+    function addParentLayout(flow_s){
         var $flow = $(flow_s);
 
 
@@ -184,10 +184,26 @@
                             $oldParent = $draggable.closest('.pb-preview, .pb-inner-column'),
                             $target = $(event.target);
 
+                        if(!$('body').hasClass('state-ctrl-pressed'))
+                            enableParentDroppable($oldParent);
 
-                        enableParentDroppable($oldParent);
                         if($draggable.hasClass('pb-preview')){
-                            $draggable.prependTo($target);
+                            if($('body').hasClass('state-ctrl-pressed')){
+                                var $clone = $draggable.clone();
+                                $clone.removeAttr('style')
+                                      .removeClass('state-dragging')
+                                            .prependTo($target);
+
+                                Mediator.publish('init:editPanel', $clone, ['edit','delete','move']);
+
+                                if(!$target.hasClass('pb-inner-column')){
+                                    addParentLayout($target.closest('.pb-content-flow'));
+                                    Layouts.publish('attachDraggable:layouts', '.pb-layout');
+                                    $('body').removeClass('state-ctrl-pressed');
+                                }
+                            } else{
+                                $draggable.prependTo($target);
+                            }
                             disableParentDroppable($target);
                         } else {
                             Layouts.publish('drop:layouts', event, ui);
@@ -212,6 +228,13 @@
             Layouts.publish('attachDraggable:layouts', '.pb-layout');
         }//
     );
+    $(document).keydown(function(event){
+        if(event.which=="17")
+            $('body').addClass('state-ctrl-pressed');
+    });
+    $(document).keyup(function(event){
+        $('body').removeClass('state-ctrl-pressed');
+    });
 
 
 }(window);
