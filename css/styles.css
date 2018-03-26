@@ -478,6 +478,15 @@ body{
 	.site .pb-columns-layout[data-columns] > div{
 		flex: 0 1 100%;
 	}
+	.pb-inner-cell .banner-content,
+	.pb-inner-cell .banner-full-width{
+		text-align: center;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.pb-inner-cell .banner img{
+		margin: 0 auto;
+	}
 }
 
 
@@ -811,4 +820,37 @@ body{
 }
 .state-page-preview .pb-content{
 	display: none;
+}
+
+
+
+
+/**/
+
+.pb-inner-cell .banner{
+    height: auto;
+}
+.pb-inner-cell .banner-full-width{
+    position: static;
+    height: auto;
+}
+.pb-inner-cell .banner-content{
+	padding: 0;
+}
+.pb-inner-cell .banner h1 {
+    font-size: 32px;
+    color: #333;
+}
+.pb-inner-cell .banner h2 {
+    font-size: 21px;
+    color: #333;
+}
+.pb-inner-cell .banner img{
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    height: auto;
+    position: static;
+	left: 0;
+	max-width: 100%;
 }
