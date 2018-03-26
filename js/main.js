@@ -21,5 +21,5 @@ Mediator.publish('init:devicesNav', '.pb-devices > a');
 Mediator.publish('init:loadPageScheme');
 // Mediator.publish('init:elements', '.pb-elements-list .pb-element');
 // Mediator.publish('init:layouts', '.pb-content-flow');
-Mediator.publish("init:pagePreview");
-Mediator.publish('init:popups');
+// Mediator.publish("init:pagePreview");
+// Mediator.publish('init:popups');

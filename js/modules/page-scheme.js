@@ -85,6 +85,8 @@
         loadPageScheme();
         Mediator.publish('init:elements', '.pb-elements-list .pb-element');
         Mediator.publish('init:layouts', '.pb-content-flow');
+        Mediator.publish("init:pagePreview");
+        Mediator.publish('init:popups');
     });
 
     previewButton.on('click', function () {
@@ -100,6 +102,8 @@
         loadPageScheme();
         Mediator.publish('init:elements', '.pb-elements-list .pb-element');
         Mediator.publish('init:layouts', '.pb-content-flow');
+        Mediator.publish("init:pagePreview");
+        Mediator.publish('init:popups');
     });
 
 }();

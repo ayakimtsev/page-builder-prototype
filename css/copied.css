@@ -1101,7 +1101,8 @@ input.ui-button::-moz-focus-inner,button.ui-button::-moz-focus-inner {
 
 .ui-selectmenu-icon.ui-icon {
     float: right;
-    margin-top: 0
+    margin-top: 10px;
+    margin-right:5px;
 }
 
 .ui-slider {
@@ -6451,15 +6452,6 @@ ul.pager-list {
     padding-left: 12px
 }
 
-.ui-selectmenu-icon.ui-icon {
-    border-top: 4px solid #4d4d4d;
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    margin-top: -2px
-}
 
 .datepicker-dropdowns .ddlb {
     display: inline-block
