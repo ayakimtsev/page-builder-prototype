@@ -814,7 +814,8 @@ body{
 	transform: scale(1);
 	transition: transform 0.1s linear;
 }
-.pb-layout:first-child:last-child > .pb-editPanel{
+.pb-layout:first-child:last-child > .pb-editPanel,
+.pb-layout:last-child > .pb-editPanel{
 	display: none;
 }
 

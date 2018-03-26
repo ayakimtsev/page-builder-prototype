@@ -73,10 +73,10 @@
             }
 
         // add edit panel
-        var panelContent = blockType == 'columns' ? ['options','delete', 'move'] : ['edit', 'delete', 'move'];
+        var panelTemplate = blockType === 'columns' ? ['options','delete', 'move'] : ['edit', 'delete', 'move'];
         Mediator.publish('init:editPanel',
             $target.find('.pb-preview-' + blockType),
-            panelContent
+            panelTemplate
         );
 
         if(!$target.hasClass('pb-inner-column')){
@@ -189,7 +189,9 @@
                                       .removeClass('state-dragging')
                                             .prependTo($target);
 
-                                Mediator.publish('init:editPanel', $clone, ['edit','delete','move']);
+                                
+                                var panelTemplate = $clone.attr('data-blocktype') === 'columns' ? ['options','delete', 'move'] : ['edit', 'delete', 'move'];
+                                Mediator.publish('init:editPanel', $clone, panelTemplate);
 
                                 if(!$target.hasClass('pb-inner-column')){
                                     addParentLayout($target.closest('.pb-content-flow'));
