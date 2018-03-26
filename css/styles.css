@@ -219,7 +219,7 @@ body{
 
   .pb-header.show-scheme .basket {
       top: 30px;
-      width: 20px;
+      width: 32px;
       height: 15px;
       right: 110px;
       background-color: #c21718;
@@ -312,7 +312,8 @@ body{
   .state-tablet-view .pb-header.show-scheme .basket,
   .state-mobile-view .pb-header.show-scheme .basket {
       top: 8px;
-      right: 9px;  
+	  right: 9px;  
+	  width: 18px;
   }
 
   .state-mobile-view .pb-header.show-scheme .menu,
@@ -805,7 +806,7 @@ body{
 	padding: 0;
 	background: #efefef;
 
-	border: 1px solid #999;
+	border: 1px dashed #999;
 	border-radius: 5px;
 	margin: 3px 0 0 0;
 	position: relative;
@@ -1024,7 +1025,7 @@ body{
 .pb-preview{
 	width: 100%;
 	position: relative;
-	box-shadow:inset 0 0 0 1px #999, 2px 2px 4px 0 #999;
+	box-shadow:inset 0 0 0 2px #777, 2px 2px 4px 0 #999;
 	border-radius: 3px;
 }
 
@@ -1163,7 +1164,12 @@ body{
 	flex: 0 1 100%;
 }
 
-
+@media screen and (min-width:1024px){
+	[data-columns="6"] .pb-inner-column.state-dropped {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
 @media screen and (min-width:640px) and (max-width:1023px){
 	.site .pb-columns-layout[data-columns]{
 		padding-top: 0;
@@ -1543,20 +1549,36 @@ body{
 
 
 /**/
+.html-wrapper,
+.html-wrapper > div,
+.pb-inner-cell{
+	display: inherit;
+	align-items: center;
+}
+.html-wrapper > div{
+	flex-direction: column;
+	align-items: center;
+}
 
 .pb-inner-cell .banner{
-    height: auto;
+	height: auto;
+	display: inherit;
 }
 .pb-inner-cell .banner-full-width{
     position: static;
-    height: auto;
+	height: auto;
+	display: inherit;
+	align-items: center;
 }
 .pb-inner-cell .banner-content{
 	padding: 0;
+	display: inherit;
+	align-items: center;
 }
 .pb-inner-cell .banner h1 {
-    font-size: 32px;
-    color: #333;
+    font-size: 30px;
+	color: #333;
+	text-shadow: none;
 }
 .pb-inner-cell .banner h2 {
     font-size: 21px;
@@ -1570,6 +1592,7 @@ body{
     position: static;
 	left: 0;
 	max-width: 100%;
+	object-fit: contain;
 }
 
 .site{
@@ -1708,6 +1731,7 @@ header:not(.sticky-mode) .basket{
 	display: inline-block;
 	width: 170px;
 	vertical-align: middle;
+	background: #999;
 }
 .footer-nav-flex {
 	display: flex;
@@ -1718,6 +1742,7 @@ header:not(.sticky-mode) .basket{
 }
 .footer-nav .pb-grey-item{
 	height: 15px;
+	background: #999;
 }
 
 footer .bottom{

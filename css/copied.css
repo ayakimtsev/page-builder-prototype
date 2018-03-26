@@ -1330,24 +1330,25 @@ ul.usp-list {
     width: 500px
 }
 
-.banner h1 {
+.site .banner h1 {
     font-weight: 700;
     text-shadow: 0 1px 1px #000!important
 }
 
-.banner h2 {
+.site .banner h2 {
     text-shadow: 0 1px 1px #000!important
 }
 
-.banner {
+.site .banner {
     text-align: left!important
 }
 
-.banner .btn {
+.site .banner .btn {
     margin-top: 20px!important
 }
 
-.btn,.over-summary .hyp {
+.site .btn,
+.site .over-summary .hyp {
     text-transform: none!important
 }
 
@@ -4515,8 +4516,9 @@ footer .bottom {
     width: 120px
 }
 
-.footer-nav {
-    text-align: right
+.columns-general>.column.footer-nav {
+    text-align: right;
+    vertical-align: middle;
 }
 
 .footer-nav .hyp {
@@ -7671,7 +7673,8 @@ ul.usp-list {
 }
 
 .flexi-row:not(.center) .banner {
-    padding: 0 1.85%
+    padding: 0 1.85%;
+    display: inherit;
 }
 
 .flexi-row:not(.center) .flow-category-tiles {
@@ -9475,7 +9478,7 @@ ul.usp-list {
 
     .banner-content {
         margin-left: 15px;
-        padding-top: 0
+        padding-top: 5px;
     }
 
     .center .banner {
@@ -9484,7 +9487,9 @@ ul.usp-list {
     }
 
     .flexi-row:not(.center) .banner {
-        padding: 0
+        padding: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .basket-page-cnt .usp {

@@ -1,5 +1,6 @@
 !function(window){
     var Layouts = {},
+        $body = $('body'),
         $contentAllFlows;
 
     Mediator.installTo(Layouts);
@@ -221,13 +222,14 @@
         Layouts.publish('attachDraggable:layouts', '.pb-layout');
     }//
     );
-    $(document).keydown(function(event){
-        if(event.which=="17")
-            $('body').addClass('state-ctrl-pressed');
-    });
-    $(document).keyup(function(event){
-        $('body').removeClass('state-ctrl-pressed');
-    });
+    $(document)
+        .keydown(function(event){
+            if(event.which=="17") $body.addClass('state-ctrl-pressed');
+        }).keyup(function(event){
+            $body.removeClass('state-ctrl-pressed');
+        }).mouseenter(function(){
+            $body.removeClass('state-ctrl-pressed');
+        });
 
 
 }(window);
