@@ -68,7 +68,7 @@ body{
 .pb-header,
 .pb-menu,
 .pb-pdp-header,
-.pb-plp-main,
+.pb-plp-middle,
 .pb-sitemap,
 .pb-footer{
 	text-align: center;
@@ -86,7 +86,7 @@ body{
 .pb-menu::after,
 .pb-footer::after,
 .pb-pdp-header::after,
-.pb-plp-main::after,
+.pb-plp-middle::after,
 .pb-sitemap::after{
 	content:"";
 	position: absolute;
