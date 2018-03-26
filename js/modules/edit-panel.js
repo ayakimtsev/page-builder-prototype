@@ -3,8 +3,8 @@
 
     Mediator.installTo(EditPanel);
 
-    function isAvailable(type, elmsArray){
-        var result = elmsArray.find(function(element) {
+    function isAvailable(type, elmsArray) {
+        var result = elmsArray.find(function (element) {
             return element === type;
         });
 
@@ -65,7 +65,6 @@
                 });
             break;
 
-
             case 'sort':
                 $flow.sortable({
                     revert: false,
@@ -79,20 +78,18 @@
                 });
             break;
 
-
             case 'move':
                 $('.pb-preview').draggable({
                     start: function( event, ui ) {
                         var $current = $(event.target);
                             $preview = $current.closest('.pb-preview, .pb-layout');
                         
-
                         $current.parent().add($preview).addClass('state-dragging');
                         $(ui.helper).closest('.pb-layout[data-type="full"]').css('z-index', 9999);
                     },
-                    stop: function( event, ui ) {
+                    stop: function (event, ui) {
                         var $current = $(event.target);
-                            $preview = $current.closest('.pb-preview, .pb-layout');
+                        $preview = $current.closest('.pb-preview, .pb-layout');
 
 
                         $current.parent().add($preview).removeClass('state-dragging');
@@ -103,10 +100,9 @@
                     opacity: 0.75,
                     handle: '[data-type="move"]'
                 });
-            break;
+                break;
         }
     };
-
 
     EditPanel.subscribe('delete:editPanel', function($deleteLink, $editPanel){
         if($editPanel.parent('.pb-layout[data-type=full]').length){
@@ -136,20 +132,19 @@
         {//
             var $elms = $(elements);
 
+        $elms.append(Page.templates['editPanel']);
+        $elms.find('.pb-opts-link').each(function () {
+            var $ths = $(this),
+                type = $ths.attr('data-type');
 
-            $elms.append(Page.templates['editPanel']);
-            $elms.find('.pb-opts-link').each(function(){
-                var $ths = $(this),
-                    type = $ths.attr('data-type');
+            if (!isAvailable(type, availButtons)) {
+                $ths.hide();
+                return;
+            }
 
-                if(!isAvailable(type,availButtons)) {
-                    $ths.hide();
-                    return;
-                }
-                
-                chooseBehavior($ths, type);
-            });
-        }//
+            chooseBehavior($ths, type);
+        });
+    }//
     );
 
     EditPanel.subscribe('refresh:editPanel', function($target, button){

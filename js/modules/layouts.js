@@ -5,7 +5,6 @@
     Mediator.installTo(Layouts);
 
     //var instance = {}
-
     Layouts.subscribe('highlight:layouts', function(event, ui)
         {//
             var blockType = $(ui.draggable).attr('data-type');
@@ -16,12 +15,10 @@
         }//
     );
 
-    Layouts.subscribe('unhighlight:layouts', function(event, ui)
-        {//
-            $contentAllFlows.removeClass('ui-prevent-nested-active');
-        }//
+    Layouts.subscribe('unhighlight:layouts', function (event, ui) {//
+        $contentAllFlows.removeClass('ui-prevent-nested-active');
+    }//
     );
-
     function disableParentDroppable($target){
         if($target.closest('[data-type="inner"]').length){
 
@@ -54,18 +51,18 @@
         }
     };
 
-    Layouts.subscribe('drop:layouts', function(event, ui)
-        {//
-            var blockType = ui.draggable.attr('data-type'),
-                $target = $(event.target),
-                $thisFlow = $target.closest('.pb-content-flow');
+    Layouts.subscribe('drop:layouts', function (event, ui) {//
+        var blockType = ui.draggable.attr('data-type'),
+            $target = $(event.target),
+            $thisFlow = $target.closest('.pb-content-flow');
 
 
-            $contentAllFlows.removeClass('ui-prevent-nested-active');
+        $contentAllFlows.removeClass('ui-prevent-nested-active');
 
-            if($target.hasClass('pb-inner-column') && blockType === 'columns') return;
+        if ($target.hasClass('pb-inner-column') && blockType === 'columns') return;
 
-            disableParentDroppable($target);
+        disableParentDroppable($target);
+
 
             // + paste next drop layout and init events
             $target.append(Page.templates[blockType]);
@@ -74,39 +71,36 @@
                 Layouts.publish('innerColumnsEvents:layouts', $target);
             }
 
-            // add edit panel
-            var panelContent = blockType == 'columns' ? ['options','delete', 'move'] : ['edit', 'delete', 'move'];
-            Mediator.publish('init:editPanel',
-                $target.find('.pb-preview-' + blockType),
-                panelContent
-            );
+        // add edit panel
+        var panelContent = blockType == 'columns' ? ['options','delete', 'move'] : ['edit', 'delete', 'move'];
+        Mediator.publish('init:editPanel',
+            $target.find('.pb-preview-' + blockType),
+            panelContent
+        );
 
-            if(!$target.hasClass('pb-inner-column')){
-                // add next block into general flow
-                if(!areActiveLayouts($thisFlow)){
-                    addParentLayout($thisFlow);
-                }
-                Layouts.publish('attachDraggable:layouts', $thisFlow.find('.pb-layout'));
+        if(!$target.hasClass('pb-inner-column')){
+            // add next block into general flow
+            if(!areActiveLayouts($thisFlow)){
+                addParentLayout($thisFlow);
             }
-        }//
-    );
+            Layouts.publish('attachDraggable:layouts', $thisFlow.find('.pb-layout'));
+        }
+        Layouts.publish('attachDraggable:layouts', $thisFlow.find('.pb-layout'));
+    });//
 
-
-    
-    function getColumnsTemlate(_cntColumns){
+    function getColumnsTemlate(_cntColumns) {
         var _columnsTemlate = '';
-
 
         for(var i = 0; i < _cntColumns; i++){
             _columnsTemlate += '<div class="pb-inner-cell"><div class="pb-inner-column pb-layout" data-type="inner"></div></div>';
         }
-        _columnsTemlate = '<div class="pb-columns-layout" data-columns="'+_cntColumns+'">' + _columnsTemlate + '</div>';
+        _columnsTemlate = '<div class="pb-columns-layout" data-columns="' + _cntColumns + '">' + _columnsTemlate + '</div>';
 
         return _columnsTemlate;
     }
 
-    function createInnerColumns($elm, $target){
-        var cntColumns = parseInt( $elm.attr('data-columns') ),
+    function createInnerColumns($elm, $target) {
+        var cntColumns = parseInt($elm.attr('data-columns')),
             columnsTemlate = getColumnsTemlate(cntColumns);
 
         $target.children('.pb-preview-columns-box').hide();
@@ -161,7 +155,7 @@
         attachEditPanel($flow.children(':not(.ui-droppable)'), ['width','delete', 'sort']);
     };
 
-    function areActiveLayouts($flow){
+    function areActiveLayouts($flow) {
         return $flow.children('.pb-layout:not(.ui-droppable-disabled)').length !== 0;
     }
 
@@ -221,12 +215,11 @@
     );
 
 
-    Layouts.subscribe('init:layouts', function(flow_s)
-        {//
-            $contentAllFlows = $(flow_s),
+    Layouts.subscribe('init:layouts', function (flow_s) {//
+        $contentAllFlows = $(flow_s),
             addParentLayout($contentAllFlows);
-            Layouts.publish('attachDraggable:layouts', '.pb-layout');
-        }//
+        Layouts.publish('attachDraggable:layouts', '.pb-layout');
+    }//
     );
     $(document).keydown(function(event){
         if(event.which=="17")

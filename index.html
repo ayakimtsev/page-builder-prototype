@@ -6,8 +6,9 @@
 
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.css"/>
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.structure.css"/>
+        <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.theme.css"/>
+        <link type="text/css" rel="stylesheet" href="css/font-awesome.css"/>
         <!-- <link type="text/css" rel="stylesheet" href="css/libs/bootstrap.css"/> -->
-
         <link rel="stylesheet" href="css/libs/froala/froala_editor.css">
         <link rel="stylesheet" href="css/libs/froala/froala_style.css">
         <link rel="stylesheet" href="css/libs/froala/plugins/code_view.css">
@@ -39,25 +40,8 @@
             <a href="#" class="pb-devices-tablet fa fa-tablet"></a>
             <a href="#" class="pb-devices-mobile fa fa-mobile"></a>
         </nav>
-        <div class="pb-content">
-            <div class="pb-header">
-                Header preview
-            </div>
-            
-            <!-- <div class="pb-menu">
-                Menu
-            </div> -->
-
-            <div class="pb-content-flow">
-            </div>
-
-            <!-- <div class="pb-area-disabled">
-                Middle side, here is some static content preview.
-            </div>
-
-            <div class="pb-content-flow">
-            </div> -->
-
+        <div class="pb-toolbar">
+            <!-- Elements list -->
             <div class="pb-elements-list">
                 <div class="pb-element fa fa-align-justify" data-type="text" text="Text block">
                     <!-- Text -->
@@ -75,14 +59,44 @@
                 </a>
             </div>
 
-            <!-- <div class="pb-sitemap">
-                Sitemap
-            </div> -->
+            <!-- Page scheme settings -->
+            <div class="pb-page-scheme">
+                <div>Page scheme:</div>
+                <br>
+                <select id="pageSchemeSwitcher">
+                    <option value="flexi-page">Flexi page</option>
+                    <option value="product-details-page">Product details page (PDP)</option>
+                    <option value="product-list-page" selected>Product list page (PLP)</option>
+                </select>
+                <br>
+                <br>
+                <div>Toggle preview:</div>
+                <br>
+                <button id="clear">Show/Hide</button>
+            </div>
+        </div>
 
+        <div class="pb-content"></div>
+
+        <!-- OLD pb-content -->
+        <!-- <div class="pb-content">
+            <div class="pb-header">
+                Header preview
+            </div>
+            
+            <div class="pb-content-flow"></div>
+
+            <div class="pb-area-disabled">
+                Middle side, here is some static content preview.
+            </div>
+
+            <div class="pb-content-flow"></div>
+            
             <div class="pb-footer">
                 Footer preview
             </div>
-        </div>
+        </div> -->
+
         <div id='pbPreviewBox' class="pb-preview-box">
             <div class="pb-page-preview-title">Page preview</div>
             <a href="#" id="pbPreviewClose" class="pb-preview-close"></a>
@@ -374,6 +388,109 @@
 
 
 
+        <script id="content" type="text/template">
+            <div class="pb-content-flow"></div>
+        </script>
+
+        <script id="sana-header" type="text/template">
+            <div class="pb-header show-scheme">
+                <span class="capture">Sana Header</span>
+                <!-- top  -->
+                <div class="scheme-item contacts"></div>
+                <div class="scheme-item language"></div>
+                <div class="scheme-item login"></div>
+                <div class="scheme-item account"></div>
+                <div class="scheme-item search-bar"></div>
+                <div class="scheme-item basket"></div>
+                <!-- middle  -->
+                <div class="scheme-item menu"></div>
+                <div class="scheme-item page-logo"></div>
+                <div class="scheme-item search-bar"></div>
+                <div class="scheme-item basket"></div>
+                <!-- bottom (navigation) -->
+                <div class="scheme-item nav-back"></div>
+                <div class="scheme-item nav-item nav-item-1"></div>
+                <div class="scheme-item nav-item nav-item-2"></div>
+                <div class="scheme-item nav-item nav-item-3"></div>
+            </div>
+        </script>
+        <script id="sana-footer" type="text/template">
+            <div class="pb-footer show-scheme">
+                <span class="capture">Sana Footer</span>
+                <!-- Sitemap -->
+                <div class="scheme-item sitemap-title"></div>
+                <div class="scheme-item sitemap-item sitemap-item-1"></div>
+                <div class="scheme-item sitemap-item sitemap-item-2"></div>
+                <div class="scheme-item sitemap-item sitemap-item-3"></div>
+                <div class="scheme-item sitemap-item sitemap-item-4"></div>
+                <div class="scheme-item sitemap-item sitemap-item-5"></div>
+                <div class="scheme-item sitemap-item sitemap-item-6"></div>
+                <div class="scheme-item sitemap-item sitemap-item-7"></div>
+                <!-- Newsletter -->
+                <div class="scheme-item newsletter-title"></div>
+                <div class="scheme-item newsletter-description"></div>
+                <div class="scheme-item newsletter-form"></div>
+                <!-- Copyrights -->
+                <div class="scheme-item copyrights"></div>
+                <!-- Links -->
+                <div class="scheme-item link link-1"></div>
+                <div class="scheme-item link link-2"></div>
+                <div class="scheme-item link link-3"></div>
+            </div>
+            
+        </script>
+
+        <script id="product-details-header" type="text/template">
+            <div class="pb-pdp-header show-scheme">
+                <span class="capture">Product details header</span>
+                <div class="scheme-item back"></div>
+                <div class="scheme-item breadcrumb breadcrumb-1"></div>
+                <div class="scheme-item breadcrumb breadcrumb-2"></div>
+                <div class="scheme-item breadcrumb breadcrumb-3"></div>
+                <div class="scheme-item product-image"></div>
+                <div class="scheme-item product-title product-title-1"></div>
+                <div class="scheme-item product-title product-title-2"></div>
+                <div class="scheme-item product-description product-description-1"></div>
+                <div class="scheme-item product-description product-description-2"></div>
+                <div class="scheme-item product-description product-description-3"></div>
+                <div class="scheme-item product-description product-description-4"></div>
+                <div class="scheme-item buy-button"></div>
+            </div>
+        </script>
+
+        <script id="product-list-middle" type="text/template">
+            <div class="pb-plp-middle show-scheme">
+                <span class="capture">Product list middle</span>
+                <!-- Top -->
+                <div class="scheme-item category-background"></div>
+                <div class="scheme-item back"></div>
+                <div class="scheme-item breadcrumb"></div>
+                <div class="scheme-item category-title"></div>
+                <!-- Facets bar -->
+                <div class="scheme-item facet facet-1"></div>
+                <div class="scheme-item facet facet-2"></div>
+                <div class="scheme-item facet facet-3"></div>
+                <div class="scheme-item facet facet-4"></div>
+                <div class="scheme-item border"></div>
+                <!-- Products list -->
+                <div class="scheme-item product-image product-image-1"></div>
+                <div class="scheme-item product-title product-title-1"></div>
+                <div class="scheme-item product-price product-price-1"></div>
+                <div class="scheme-item product-buy product-buy-1"></div>
+
+                <div class="scheme-item product-image product-image-2"></div>
+                <div class="scheme-item product-title product-title-2"></div>
+                <div class="scheme-item product-price product-price-2"></div>
+                <div class="scheme-item product-buy product-buy-2"></div>
+
+                <div class="scheme-item product-image product-image-3"></div>
+                <div class="scheme-item product-title product-title-3"></div>
+                <div class="scheme-item product-price product-price-3"></div>
+                <div class="scheme-item product-buy product-buy-3"></div>
+
+            </div>
+        </script>
+
         <!-- libs -->
         <script src="js/libs/jquery-3.1.1.min.js"></script>
         <script src="js/libs/jquery-ui.js"></script>
@@ -421,6 +538,7 @@
 
         <script src="js/modules/elements.js"></script>
         <script src="js/modules/layouts.js"></script>
+        <script src="js/modules/page-scheme.js"></script>
         <script src="js/modules/popups.js"></script>
         <script src="js/modules/page-preview.js"></script>
 
