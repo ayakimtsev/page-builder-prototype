@@ -35,8 +35,8 @@
                 <div>Page scheme:</div>
                 <select id="pageSchemeSwitcher">
                     <option value="flexi-page">Flexi page</option>
-                    <option value="product-details-page" selected>Product details page (PDP)</option>
-                    <option value="product-list-page">Product list page (PLP)</option>
+                    <option value="product-details-page">Product details page (PDP)</option>
+                    <option value="product-list-page" selected>Product list page (PLP)</option>
                 </select>
                 <div>Test:</div>
                 <button id="clear">Clear</button>
@@ -221,8 +221,35 @@
         </script>
 
         <script id="product-list-middle" type="text/template">
-            <div class="pb-header">
-                Product list middle
+            <div class="pb-plp-middle show-scheme">
+                <span class="capture">Product list middle</span>
+                <!-- Top -->
+                <div class="scheme-item category-background"></div>
+                <div class="scheme-item back"></div>
+                <div class="scheme-item breadcrumb"></div>
+                <div class="scheme-item category-title"></div>
+                <!-- Facets bar -->
+                <div class="scheme-item facet facet-1"></div>
+                <div class="scheme-item facet facet-2"></div>
+                <div class="scheme-item facet facet-3"></div>
+                <div class="scheme-item facet facet-4"></div>
+                <div class="scheme-item border"></div>
+                <!-- Products list -->
+                <div class="scheme-item product-image product-image-1"></div>
+                <div class="scheme-item product-title product-title-1"></div>
+                <div class="scheme-item product-price product-price-1"></div>
+                <div class="scheme-item product-buy product-buy-1"></div>
+
+                <div class="scheme-item product-image product-image-2"></div>
+                <div class="scheme-item product-title product-title-2"></div>
+                <div class="scheme-item product-price product-price-2"></div>
+                <div class="scheme-item product-buy product-buy-2"></div>
+
+                <div class="scheme-item product-image product-image-3"></div>
+                <div class="scheme-item product-title product-title-3"></div>
+                <div class="scheme-item product-price product-price-3"></div>
+                <div class="scheme-item product-buy product-buy-3"></div>
+
             </div>
         </script>
 
