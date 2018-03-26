@@ -83,7 +83,7 @@
 
     schemeSwitcher.on('selectmenuchange', function () {
         loadPageScheme();
-        Mediator.publish('init:elements', '.pb-elements-list .pb-element');
+        Mediator.publish('init:elements', '.pb-elements-list .pb-element:not([data-type="disabled"])');
         Mediator.publish('init:layouts', '.pb-content-flow');
         Mediator.publish("init:pagePreview");
         Mediator.publish('init:popups');
@@ -100,7 +100,7 @@
     */
     PageScheme.subscribe('init:loadPageScheme', function () {
         loadPageScheme();
-        Mediator.publish('init:elements', '.pb-elements-list .pb-element');
+        Mediator.publish('init:elements', '.pb-elements-list .pb-element:not([data-type="disabled"])');
         Mediator.publish('init:layouts', '.pb-content-flow');
         Mediator.publish("init:pagePreview");
         Mediator.publish('init:popups');
