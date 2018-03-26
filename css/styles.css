@@ -81,7 +81,7 @@ body{
 	text-decoration: none !important;
 	color:#555;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 	transition: color 0.1s linear;
 }
 .pb-preview-page:hover{
@@ -143,6 +143,25 @@ body{
 .show-scheme {
     position: relative;
     background: none;
+    opacity: 0.75;
+}
+
+.show-scheme::before{
+	content:"";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	background: repeating-linear-gradient(
+		-45deg,
+		rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0.05) 10px,
+		rgba(220, 220, 220, 0.1) 10px, 
+		rgba(220, 220, 220, 0.1) 20px,
+		rgba(0, 0, 0, 0.14) 20px
+	);
 }
 
 .scheme-item {
@@ -1825,4 +1844,17 @@ footer .bottom{
 .container {
     width: 1224px;
     max-width: none!important;
+}
+
+.navbar .container::after {
+    content: 'Prototype for acquaintance';
+    position: absolute;
+    right: 0;
+    top:26px;
+    text-align: center;
+    transform: rotateZ(45deg);
+    width: 100px;
+    font-size: 12px;
+    line-height: 13px;
+    font-weight: bold;
 }

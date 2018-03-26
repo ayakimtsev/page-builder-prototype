@@ -6,7 +6,7 @@
 
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.css"/>
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.structure.css"/>
-        <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.theme.css"/>
+        <!-- <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.theme.css"/> -->
         <link type="text/css" rel="stylesheet" href="css/libs/font-awesome.css"/>
         <link type="text/css" rel="stylesheet" href="css/libs/bootstrap.css"/>
 
@@ -88,15 +88,15 @@
 
                         <!-- Page scheme settings -->
                         <div class="pb-page-scheme">
-                            <div style="display:none;">
+                            <!-- <div style="display:none;"> -->
                                 <div>Page scheme:</div>
 
                                 <select id="pageSchemeSwitcher">
                                     <option value="flexi-page">Flexi page</option>
-                                    <!-- <option value="product-details-page">Product details page (PDP)</option> -->
-                                    <!-- <option value="product-list-page" selected>Product list page (PLP)</option> -->
+                                    <!-- <option value="product-details-page">Details page</option> -->
+                                    <option value="product-list-page" selected>List page</option>
                                 </select>
-                            </div>
+                            <!-- </div> -->
                             <div>Toggle details:</div>
                             <button id="clear">Show/Hide</button>
                         </div>
@@ -173,9 +173,11 @@
                     </div>
                 </header>
                 <div class="content">
-                    <div class="pb-page-content">
-
+                    <div class="pb-page-content"></div>
+                    <div class="pb-plp-middle show-scheme">
+                        !!!page preview PLP!!!
                     </div>
+                    <div class="pb-page-content"></div>
                 </div>
                 <footer class="pb-page-footer">
                     <div class="center">

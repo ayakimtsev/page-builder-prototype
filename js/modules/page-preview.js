@@ -4,48 +4,57 @@
         $previewBox = $('#pbPreviewBox'),
         $contentAllFlows = $('.pb-content-flow'),
         $pageContents = $('.pb-page-content');
-
+        
     Mediator.installTo(PagePreview);
 
-    function collectData($flow){
-        var data = [];
-
-        $flow.find('.state-dropped[data-type="full"], .state-dropped[data-type="content"]')
-            .each(function(){
-                var $ths = $(this),
-                    rowType = $ths.attr('data-type'),
-                    $previewBlock = $ths.children('.pb-preview'),
-                    previewParentBlockType = $previewBlock.attr('data-blocktype'),
-                    elements = [];
+    function collectData($flows){
+        var flowsData = [];
 
 
-                    if(previewParentBlockType === 'columns'){
-                        $previewBlock.find('.pb-inner-cell').each(function(){
-                            var $ths = $(this);
-                                $previewBlock = $ths.find('.pb-preview'),
-                                previewBlockType = $previewBlock.attr('data-blocktype');
+        $flows.each(function(){
+            var $thsFlow = $(this);
+                tmpData = [];
 
 
+            $thsFlow.find('.state-dropped[data-type="full"], .state-dropped[data-type="content"]')
+                    .each(function(){
+                        var $ths = $(this),
+                            rowType = $ths.attr('data-type'),
+                            $previewBlock = $ths.children('.pb-preview'),
+                            previewParentBlockType = $previewBlock.attr('data-blocktype'),
+                            elements = [];
+
+
+                        if(previewParentBlockType === 'columns'){
+                            $previewBlock.find('.pb-inner-cell').each(function(){
+                                var $ths = $(this);
+                                    $previewBlock = $ths.find('.pb-preview'),
+                                    previewBlockType = $previewBlock.attr('data-blocktype');
+
+
+                                elements.push({
+                                    previewBlockType: previewBlockType,
+                                    contentString:$previewBlock.attr('data-edit-string')
+                                });
+                            });
+                        } else {
                             elements.push({
-                                previewBlockType: previewBlockType,
+                                previewBlockType: previewParentBlockType,
                                 contentString:$previewBlock.attr('data-edit-string')
                             });
-                        });
-                    } else{
-                        elements.push({
-                            previewBlockType: previewParentBlockType,
-                            contentString:$previewBlock.attr('data-edit-string')
-                        });
-                    }
+                        }
 
-                data.push({
-                    rowType:rowType,
-                    columns:previewParentBlockType === 'columns',
-                    elements:elements.reverse()
-                });
-            });
+                        tmpData.push({
+                            rowType:rowType,
+                            columns:previewParentBlockType === 'columns',
+                            elements:elements.reverse()
+                        });
+                    });
+            flowsData.push(tmpData);
+        });
+            
 
-        return data;
+        return flowsData;
     };
 
 
@@ -80,7 +89,7 @@
 
     }
     function buildPreviewContent($pagePreviewContent, pageData){
-        if(typeof pageData === 'object' && pageData.length === 0){
+        if(typeof pageData === 'object' && pageData.length === 0 || typeof pageData === 'undefined'){
             console.warn('No elements to build for page preview');
             return;
         }
@@ -91,15 +100,7 @@
                 $tmpParent, $row;
 
 
-            $tmpParent = $(Page.templates.pageElements[rowType]);
-            $pagePreviewContent.append($tmpParent);
 
-            if(dataSub.columns === true){
-                var $colsCnt = elements.length;
-                $row = $(Page.templates.pageElements['bs_row']);
-                $row.attr('data-columns', $colsCnt);
-                $tmpParent.html($row);
-            }
 
             $.each(elements, function(indSub,dataInner){
                 var previewBlockType = dataInner.previewBlockType,
@@ -107,11 +108,23 @@
                     $tmpSub = $(Page.templates.pageElements[previewBlockType]);
 
 
+
+                $tmpParent = $(Page.templates.pageElements[rowType]);
+                $pagePreviewContent.append($tmpParent);
+        
+                if(dataSub.columns === true){
+                    var $colsCnt = elements.length;
+                    $row = $(Page.templates.pageElements['bs_row']);
+                    $row.attr('data-columns', $colsCnt);
+                    $tmpParent.html($row);
+                }
+
+
                 if(!contentStringArr){
                     console.warn('No data - buildPreviewContent');
                 }
 
-                if(dataSub.columns === true){
+                if(pageData.columns === true){
                     var $innerBlock = $(Page.templates.pageElements['bs_cell']);
                     $row.prepend($innerBlock);
                     $innerBlock.html($tmpSub);
@@ -120,8 +133,7 @@
                 }
                 attachData(contentStringArr,$tmpSub);
             });
-            
-        })
+        });
     };
 
 
@@ -130,34 +142,32 @@
     };
 
     PagePreview.subscribe("init:pagePreview", function() {
-        $('#pbPreviewPage').on('click.pagePreview', function(e){
+        $('#pbPreviewPage').off().on('click.pagePreview', function(e){
             e.preventDefault();
             $('html, body').addClass('state-page-preview');
             $previewBox.show();
             $contentAllFlows = $('.pb-content-flow');
 
-            var pageData = collectData($contentAllFlows);
+            var pageData = collectData($contentAllFlows) || false;
 
 
             $contentAllFlows.each(function(ind,val){
                 var $ths = $(this),
-                    pageData = collectData($ths) || false,
                     $pagePreviewContent = $('.pb-page-content').eq(ind);
-                
                 if(pageData){
-                    buildPreviewContent($pagePreviewContent, pageData);
+                    buildPreviewContent($pagePreviewContent, pageData[ind]);
                 }
             });
         });
 
-        $('#pbPreviewClose').on('click.pagePreview', function(e){
+        $('#pbPreviewClose').off().on('click.pagePreview', function(e){
             $('html, body').removeClass('state-page-preview');
             e.preventDefault();
             $previewBox.hide();
             clearPreviewContent();
         });
 
-        $(document).keyup(function(e) {
+        $(document).off().keyup(function(e) {
             if (e.keyCode === 27)  $('#pbPreviewClose').trigger('click.pagePreview');
         });
     });
