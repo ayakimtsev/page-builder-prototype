@@ -8,7 +8,7 @@
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.structure.css"/>
         <link type="text/css" rel="stylesheet" href="css/libs/jquery-ui.theme.css"/>
         <link type="text/css" rel="stylesheet" href="css/libs/font-awesome.css"/>
-        <!-- <link type="text/css" rel="stylesheet" href="css/libs/bootstrap.css"/> -->
+        <link type="text/css" rel="stylesheet" href="css/libs/bootstrap.css"/>
 
         <link rel="stylesheet" href="css/libs/froala/froala_editor.css">
         <link rel="stylesheet" href="css/libs/froala/froala_style.css">
@@ -36,51 +36,64 @@
         <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     </head>
     <body>
-        <nav class="pb-devices">
-            <a href="#" class="pb-devices-desktop active fa fa-desktop"></a>
-            <a href="#" class="pb-devices-tablet fa fa-tablet"></a>
-            <a href="#" class="pb-devices-mobile fa fa-mobile"></a>
-        </nav>
-        <div class="pb-toolbar">
-            <!-- Elements list -->
-            <div class="pb-elements-list">
-                <div class="pb-element fa fa-align-justify" data-type="text" text="Text block">
-                    <!-- Text -->
-                </div>
-                <div class="pb-element fa fa-image" data-type="image" text="Image block">
-                    <!-- Image -->
-                </div>
-                <div class="pb-element fa fa-columns" data-type="columns" text="Columns block">
-                    <!-- Columns -->
-                </div>
-
-                <a href="#" id='pbPreviewPage' class="pb-preview-page">
-                    <i class="fa fa-window-maximize"></i>
-                    PREVIEW
-                </a>
-            </div>
-
-            <!-- Page scheme settings -->
-            <div class="pb-page-scheme">
-                <div style="display:none;">
-                    <div>Page scheme:</div>
-                    <br>
-                    <select id="pageSchemeSwitcher">
-                        <option value="flexi-page">Flexi page</option>
-                        <!-- <option value="product-details-page">Product details page (PDP)</option>
-                        <option value="product-list-page" selected>Product list page (PLP)</option> -->
-                    </select>
-                    
-                    <br>
-                    <br>
-                </div>
-                <div>Toggle details:</div>
-                <br>
-                <button id="clear">Show/Hide</button>
+        <div class="navbar navbar-default">
+            <div class="container">
+                    <img src="files/bo-preview/header-panel.png">
             </div>
         </div>
+        <div class="container">
+            <div class="row content-wrapper">
+                <div class="col-xs-2">
+                    <img src="files/bo-preview/left-panel.png">
+                </div>
+                <div class="col-xs-8 main-area">
+                    <h1>Test page</h1>
 
-        <div class="pb-content"></div>
+                    <nav class="pb-devices">
+                        <a href="#" class="pb-devices-desktop active fa fa-desktop"></a>
+                        <a href="#" class="pb-devices-tablet fa fa-tablet"></a>
+                        <a href="#" class="pb-devices-mobile fa fa-mobile"></a>
+                    </nav>
+                    <div class="pb-toolbar">
+                        <!-- Elements list -->
+                        <div class="pb-elements-list">
+                            <div class="pb-element fa fa-align-justify" data-type="text" text="Text block">
+                                <!-- Text -->
+                            </div>
+                            <div class="pb-element fa fa-image" data-type="image" text="Image block">
+                                <!-- Image -->
+                            </div>
+                            <div class="pb-element fa fa-columns" data-type="columns" text="Columns block">
+                                <!-- Columns -->
+                            </div>
+
+                            <a href="#" id='pbPreviewPage' class="pb-preview-page">
+                                <i class="fa fa-window-maximize"></i>
+                                PREVIEW
+                            </a>
+                        </div>
+
+                        <!-- Page scheme settings -->
+                        <div class="pb-page-scheme">
+                            <div style="display:none;">
+                                <div>Page scheme:</div>
+
+                                <select id="pageSchemeSwitcher">
+                                    <option value="flexi-page">Flexi page</option>
+                                    <!-- <option value="product-details-page">Product details page (PDP)</option> -->
+                                    <!-- <option value="product-list-page" selected>Product list page (PLP)</option> -->
+                                </select>
+                            </div>
+                            <div>Toggle details:</div>
+                            <button id="clear">Show/Hide</button>
+                        </div>
+                    </div>
+
+                    <div class="pb-content"></div>
+
+                </div>
+            </div>
+    </div>
 
         <!-- OLD pb-content -->
         <!-- <div class="pb-content">
@@ -212,24 +225,7 @@
                 </footer>
             </div>
         </div>
-        <!-- <script id="" type="text/javascript">
-            var pageBuilderSavedLayout = {
 
-            };
-
-            var PageBuilderBlocks = {
-                'text': {
-                    label:'Text',
-                    template:'#pbTmpText',
-                    icon: 'fa fa-image'
-                },
-                'image': {
-                    label:'Image',
-                    template:'#pbTmpImage',
-                    icon: 'fa fa-image'
-                }
-            }
-        </script> -->
 
 
 

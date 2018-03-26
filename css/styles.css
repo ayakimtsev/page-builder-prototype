@@ -925,13 +925,15 @@ body{
 
 /* Toolbar --START--*/
 .pb-toolbar {
-	position: fixed;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	top: 60px;
-	right: 20px;
-	width: auto;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    top: 257px;
+    right: auto;
+    width: auto;
+    /* left: 50%; */
+    margin-left: 800px;
 }
 
 .pb-elements-list {
@@ -1256,7 +1258,10 @@ body{
 /* .state-hide-editPanels .pb-editPanel{
 	transform: translateX(110%);
 } */
-.pb-opts-link{
+.pb-opts-link,
+.pb-opts-link:active,
+.pb-opts-link:focus,
+.pb-opts-link:hover{
 	color:#fff;
 	background: rgba(0,0,0,0);
 	text-decoration: none;
@@ -1271,6 +1276,9 @@ body{
 	outline: none;
 	display: inline-block;
 	vertical-align: middle;
+}
+.pb-opts-link:hover{
+	opacity: 0.8;
 }
 
 .pb-opts-link[data-type="move"]{
@@ -1749,7 +1757,21 @@ footer .bottom{
 	}
 }
 
+.navbar {
+	margin-bottom: 30px;
+	background:#f2f1f3;
+}
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
 	color:#333;
+}
+
+.main-area h1{
+	font-weight: normal;
+	color: rgb(71, 71, 71);
+}
+
+.container {
+    width: 1224px;
+    max-width: none!important;
 }
