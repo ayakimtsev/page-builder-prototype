@@ -435,6 +435,7 @@ body{
 
     .pb-plp-middle.show-scheme .category-background {
         height: 60px;
+        top: 0;
         left: 1px;
         right: 1px;
         background-color: #f7f7f7;

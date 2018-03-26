@@ -3,8 +3,8 @@
 
     Mediator.installTo(PageScheme);
 
-    var clearButton = $('#clear');
-    clearButton.button();
+    var previewButton = $('#clear');
+    previewButton.button();
     var schemeSwitcher = $('#pageSchemeSwitcher');
     schemeSwitcher.selectmenu();
 
@@ -87,9 +87,8 @@
         Mediator.publish('init:layouts', '.pb-content-flow');
     });
 
-    clearButton.on('click', function () {
-        var content = $('.pb-content');
-        content.html('');
+    previewButton.on('click', function () {
+        $('.pb-header, .pb-footer, .pb-pdp-header, .pb-plp-middle').toggleClass('show-scheme ');
     });
 
     /*  TODO:
