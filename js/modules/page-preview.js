@@ -131,7 +131,6 @@
 
     PagePreview.subscribe("init:pagePreview", function() {
         $('#pbPreviewPage').on('click.pagePreview', function(e){
-            debugger;
             e.preventDefault();
             $('html, body').addClass('state-page-preview');
             $previewBox.show();
