@@ -234,6 +234,97 @@ body{
   .pb-header.show-scheme .nav-item-3 {
       left: 235px;
   }
+  
+  .state-tablet-view .pb-header.show-scheme,
+  .state-mobile-view .pb-header.show-scheme {
+      height: 26px; 
+  }
+
+  .state-tablet-view .pb-header.show-scheme .contacts,
+  .state-mobile-view .pb-header.show-scheme .contacts {
+
+      display: none; 
+  }
+
+  .state-tablet-view .pb-header.show-scheme .page-logo {
+      left: 50px;   
+      top: 5px;
+  }
+  .state-mobile-view .pb-header.show-scheme .page-logo {
+      left: 135px; 
+      top: 5px;
+  }
+
+
+  .state-tablet-view .pb-header.show-scheme .search-bar {
+      left: 166px;
+      top: 5px;
+  }
+
+  .state-mobile-view .pb-header.show-scheme .search-bar {
+      display: none; 
+  }
+
+  .state-tablet-view .pb-header.show-scheme .language,
+  .state-tablet-view .pb-header.show-scheme .account,
+  .state-tablet-view .pb-header.show-scheme .login {
+      width: 10px;
+      height: 10px;
+      top: 10px;
+  }
+  
+  .state-mobile-view .pb-header.show-scheme .language,
+  .state-mobile-view .pb-header.show-scheme .account,
+  .state-mobile-view .pb-header.show-scheme .login {
+      display: none; 
+  }
+
+  .state-tablet-view .pb-header.show-scheme .language {
+      right: 82px;  
+  }
+
+  .state-tablet-view .pb-header.show-scheme .account {
+      right: 60px;  
+  }
+
+  .state-tablet-view .pb-header.show-scheme .login {
+      right: 40px; 
+  }
+
+  .state-tablet-view .pb-header.show-scheme .basket,
+  .state-mobile-view .pb-header.show-scheme .basket {
+      top: 8px;
+      right: 9px;  
+  }
+
+  .state-mobile-view .pb-header.show-scheme .menu,
+  .state-tablet-view .pb-header.show-scheme .menu {
+      width: 20px;
+      height: 20px;
+      top: 5px;
+      left: 8px; 
+      background: linear-gradient(
+          to bottom, 
+          #1f7bc9 0%,
+          #1f7bc9 20%,
+          transparent 20%,
+          transparent 40%,
+          #1f7bc9 40%,
+          #1f7bc9 60%,
+          transparent 60%,
+          transparent 80%,
+          #1f7bc9 80%,
+          #1f7bc9 100%
+      );
+  }
+  
+  .state-tablet-view .pb-header.show-scheme .nav-back,
+  .state-tablet-view .pb-header.show-scheme .nav-item,
+  .state-mobile-view .pb-header.show-scheme .nav-back,
+  .state-mobile-view .pb-header.show-scheme .nav-item {
+      display: none; 
+  }
+
   /* pb footer positioning */
   .pb-footer.show-scheme {
       height: 80px; 
