@@ -49,7 +49,6 @@
                         .removeClass('state-dropped ui-droppable-active')
                         .droppable("enable");
         }
-
     };
 
     Layouts.subscribe('drop:layouts', function (event, ui) {//
@@ -64,11 +63,13 @@
 
         disableParentDroppable($target);
 
-        // + paste next drop layout and init events
-        $target.append(Page.templates[blockType]);
-        if (blockType === 'columns') {
-            Layouts.publish('innerColumnsEvents:layouts', $target);
-        }
+
+            // + paste next drop layout and init events
+            $target.append(Page.templates[blockType]);
+            $target.find('.pb-preview-' + blockType).attr('data-blockType', blockType);
+            if(blockType === 'columns'){
+                Layouts.publish('innerColumnsEvents:layouts', $target);
+            }
 
         // add edit panel
         var panelContent = blockType == 'columns' ? ['options','delete', 'move'] : ['edit', 'delete', 'move'];
@@ -106,16 +107,17 @@
 
         var $existColumns = $target.find('.pb-columns-layout').show();
         if($existColumns.length){
-            var exitCnt = parseInt($existColumns.attr('data-columns'));
-            
-            if(exitCnt < cntColumns){
+            var existCnt = parseInt($existColumns.attr('data-columns'));
+           
+
+            if(existCnt < cntColumns){
                 do{
                     $existColumns.append('<div class="pb-inner-cell"><div class="pb-inner-column pb-layout" data-type="inner"></div></div>');
-                    exitCnt+=1;
+                    existCnt+=1;
                 }
-                while(exitCnt > cntColumns);
-            } else if(exitCnt > cntColumns){
-                //$existColumns.children(':')
+                while(existCnt < cntColumns);
+            } else if(existCnt > cntColumns){
+                $existColumns.children(':not(:nth-of-type(-n+'+cntColumns+'))').remove();
             }
 
             $existColumns.attr('data-columns', cntColumns);
@@ -145,7 +147,7 @@
         );
     }
 
-    function addParentLayout(flow_s,buttons){
+    function addParentLayout(flow_s){
         var $flow = $(flow_s);
 
 
@@ -176,10 +178,26 @@
                             $oldParent = $draggable.closest('.pb-preview, .pb-inner-column'),
                             $target = $(event.target);
 
+                        if(!$('body').hasClass('state-ctrl-pressed'))
+                            enableParentDroppable($oldParent);
 
-                        enableParentDroppable($oldParent);
                         if($draggable.hasClass('pb-preview')){
-                            $draggable.prependTo($target);
+                            if($('body').hasClass('state-ctrl-pressed')){
+                                var $clone = $draggable.clone();
+                                $clone.removeAttr('style')
+                                      .removeClass('state-dragging')
+                                            .prependTo($target);
+
+                                Mediator.publish('init:editPanel', $clone, ['edit','delete','move']);
+
+                                if(!$target.hasClass('pb-inner-column')){
+                                    addParentLayout($target.closest('.pb-content-flow'));
+                                    Layouts.publish('attachDraggable:layouts', '.pb-layout');
+                                    $('body').removeClass('state-ctrl-pressed');
+                                }
+                            } else{
+                                $draggable.prependTo($target);
+                            }
                             disableParentDroppable($target);
                         } else {
                             Layouts.publish('drop:layouts', event, ui);
@@ -203,6 +221,13 @@
         Layouts.publish('attachDraggable:layouts', '.pb-layout');
     }//
     );
+    $(document).keydown(function(event){
+        if(event.which=="17")
+            $('body').addClass('state-ctrl-pressed');
+    });
+    $(document).keyup(function(event){
+        $('body').removeClass('state-ctrl-pressed');
+    });
 
 
 }(window);

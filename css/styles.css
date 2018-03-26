@@ -62,6 +62,23 @@ body{
 	min-height: 153px;
 }
 
+.pb-preview-page{
+	position: absolute;
+	top:100%;
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding: 4px 7px;
+	text-decoration: none;
+	color:#555;
+	font-weight: bold;
+	font-size: 14px;
+
+	transition: color 0.1s linear;
+}
+.pb-preview-page:hover{
+	color:#000;
+}
 
 /* static-preview items */
 .pb-area-disabled,
@@ -613,7 +630,7 @@ body{
 
 .pb-layout > .pb-layout{
 	max-width: 100%;
-	width: 580px;
+	width: 610px;
 	z-index: 1;
 	margin:0 auto;
 	min-height: 148px;
@@ -682,7 +699,7 @@ body{
 
 	.pb-layout[data-type="full"]::after{
 		left: auto;
-		right: 25px;
+		right: 18px;
 	}
 	/**/
 
@@ -865,7 +882,7 @@ body{
 .pb-columns-box{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 
 	max-width: 440px;
 	flex: 1 1 50%;
@@ -889,23 +906,23 @@ body{
 }
 
 [data-columns="2"] > div{
-	width: 50%;
+	/* width: 50%; */
 	flex: 0 1 50%;
 }
 [data-columns="3"] > div{
-	width: 33.3333%;
+	/* width: 33.3333%; */
 	flex: 0 1 33.3333%;
 }
 [data-columns="4"] > div{
-	width: 25%;
+	/* width: 25%; */
 	flex: 0 1 25%;
 }
 [data-columns="5"] > div{
-	width: 20%;
+	/* width: 20%; */
 	flex: 0 1 20%;
 }
 [data-columns="6"] > div{
-	width: 16.6666%;
+	/* width: 16.6666%; */
 	flex: 0 1 16.6666%;
 }
 
@@ -914,10 +931,82 @@ body{
 	flex-basis: 100% */
 }
 
-.state-mobile-view [data-columns="3"] > div,
-.state-mobile-view [data-columns="2"] > div{
-
+.state-tablet-view .state-dropped[data-type="full"],
+.state-tablet-view .state-dropped[data-type="content"],
+.state-mobile-view .state-dropped[data-type="full"],
+.state-mobile-view .state-dropped[data-type="content"] {
+    padding: 10px;
 }
+
+.state-tablet-view [data-type="full"] > .pb-editPanel,
+.state-tablet-view [data-type="content"] + .pb-editPanel,
+.state-mobile-view [data-type="full"] > .pb-editPanel,
+.state-mobile-view [data-type="content"] + .pb-editPanel{
+	display: none;
+}
+
+.state-tablet-view .pb-columns-layout[data-columns],
+.state-mobile-view .pb-columns-layout[data-columns]{
+	padding-top: 0;
+}
+
+.state-tablet-view .pb-columns-layout[data-columns="4"] > div{
+	flex: 0 1 50%;
+}
+
+.state-tablet-view .pb-columns-layout[data-columns="5"] > div,
+.state-tablet-view .pb-columns-layout[data-columns="6"] > div{
+	flex: 0 1 33.3333%;
+}
+
+.state-tablet-view .pb-columns-layout[data-columns] > div,
+.state-mobile-view .pb-columns-layout[data-columns] > div{
+	margin: 10px auto 0;
+}
+
+.state-mobile-view .pb-columns-layout[data-columns] > div{
+	flex: 0 1 100%;
+}
+
+
+@media screen and (min-width:640px) and (max-width:1023px){
+	.site .pb-columns-layout[data-columns]{
+		padding-top: 0;
+	}
+	.site .pb-columns-layout[data-columns="4"] > div{
+		flex: 0 1 50%;
+	}
+	.site .pb-columns-layout[data-columns="5"] > div,
+	.site .pb-columns-layout[data-columns="6"] > div{
+		flex: 0 1 33.3333%;
+	}
+	.site .pb-columns-layout[data-columns] > div{
+		margin: 10px auto 0;
+	}
+}
+@media screen and (max-width:639px){
+	.site .pb-columns-layout[data-columns]{
+		padding-top: 0;
+	}
+	.site .pb-columns-layout[data-columns] > div{
+		margin: 10px auto 0;
+	}
+	.site .pb-columns-layout[data-columns] > div{
+		flex: 0 1 100%;
+	}
+	.pb-inner-cell .banner-content,
+	.pb-inner-cell .banner-full-width{
+		text-align: center;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.pb-inner-cell .banner img{
+		margin: 0 auto;
+	}
+}
+
+
+
 
 /* END previews content blocks*/
 
@@ -1000,7 +1089,7 @@ body{
 	line-height: 18px;
 	height: 18px;
 	min-width: 18px;
-	margin: 0 2px;
+	margin: 0;
 	border-radius: 8px;
 	text-align: center;
 
@@ -1011,6 +1100,9 @@ body{
 
 .pb-opts-link[data-type="move"]{
 	cursor: pointer;
+}
+.state-ctrl-pressed .pb-opts-link[data-type="move"]{
+	cursor: cell;
 }
 
 [data-type="width"]{
@@ -1082,7 +1174,12 @@ body{
     margin: auto;
     min-width: 200px;
     max-width: 99%;
-    padding: 30px 32px 0;
+	padding: 30px 32px 0;
+	font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+	letter-spacing: .02em;
+	font-size: 14px;
+    line-height: 1.42857143;
+    color: #474747;
 }
 
 .pb-popup-close {
@@ -1136,20 +1233,22 @@ body{
 }
 
 .pb-popup-inside {
-    width: 100%;
+	width: 100%;
+	min-width: 560px;
     height: 100%;
 	background: #fff;
 	border-radius: 3px;
     padding: 10px 30px 40px 30px;
-    box-shadow: 0 0 0 1px rgba(50, 50, 50, 0.65);
+	box-shadow: 0 0 0 1px rgba(50, 50, 50, 0.65);
+	position: relative;
 }
 
 .pb-popup-footer{
 	position: absolute;
 	display: flex;
 	bottom: 0;
-	left: 32px;
-	right: 32px;
+	left: 0;
+	right: 0;
 	height: 40px;
 }
 
@@ -1163,7 +1262,8 @@ body{
 
 .pb-options-flow{
 	min-height: 40px;
-	padding: 10px 0;
+	padding: 10px 0 25px;
+	text-align: left;
 }
 
 .pb-popup-btn{
@@ -1186,23 +1286,87 @@ body{
 	text-align: center;
 
 	width: 50%;
-	transform: scale(1);
-	transition: transform 0.1s linear,
-				background 0.1s linear;
+	transition: background 0.15s ease;
 }
 
-.pb-popup-btn:hover{
-	transform: scale(0.9);
+.pb-popup-btn .fa{
+	transform: scale(1);
+	transition: transform 0.15s ease;
 }
-.pb-popup-back:hover{
+
+.pb-popup-btn:hover .fa{
+	transform: scale(1.3);
+}
+.pb-popup-back{
 	background: #AA3939;
 }
-.pb-popup-agree:hover{
+.pb-popup-agree{
 	background: #28774F;
 }
 
 .pb-popup-btn:active{
-	transform: scale(1);
+	background: #777;
+}
+.pb-popup-title{
+	margin: 15px 0 0;
 }
 
 /* END popups */
+
+
+.file_upload input[type="file"]{
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.image-preview{
+	padding-bottom: 7px;
+}
+.image-preview img{
+	max-width: 300px;
+	max-height: 120px;
+	display: block;
+}
+
+.state-page-preview{
+	overflow: hidden;
+	min-width: 0;
+}
+.state-page-preview .pb-content{
+	display: none;
+}
+
+
+
+
+/**/
+
+.pb-inner-cell .banner{
+    height: auto;
+}
+.pb-inner-cell .banner-full-width{
+    position: static;
+    height: auto;
+}
+.pb-inner-cell .banner-content{
+	padding: 0;
+}
+.pb-inner-cell .banner h1 {
+    font-size: 32px;
+    color: #333;
+}
+.pb-inner-cell .banner h2 {
+    font-size: 21px;
+    color: #333;
+}
+.pb-inner-cell .banner img{
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    height: auto;
+    position: static;
+	left: 0;
+	max-width: 100%;
+}

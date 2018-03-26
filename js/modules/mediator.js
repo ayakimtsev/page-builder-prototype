@@ -1,7 +1,7 @@
 !function() {
     var Mediator = window.Mediator = {},
         channels = [],
-        debug = true;
+        debug = false;
 
     Mediator.subscribe = function(channel, func) {
         if (!channels[channel]) {
