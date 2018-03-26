@@ -1104,6 +1104,7 @@ body{
 [data-columns="2"] > div{
 	/* width: 50%; */
 	flex: 0 1 50%;
+	padding: 0 10px;
 }
 [data-columns="3"] > div{
 	/* width: 33.3333%; */
@@ -1563,6 +1564,7 @@ body{
 .pb-inner-cell .banner{
 	height: auto;
 	display: inherit;
+	margin: 0 auto;
 }
 .pb-inner-cell .banner-full-width{
     position: static;
@@ -1574,6 +1576,11 @@ body{
 	padding: 0;
 	display: inherit;
 	align-items: center;
+}
+.site .flexi-row:not(.center) .banner,
+.site .flexi-row .banner,
+.site .pb-inner-cell .flexi-row .banner{
+	padding: 0;
 }
 .pb-inner-cell .banner h1 {
     font-size: 30px;
