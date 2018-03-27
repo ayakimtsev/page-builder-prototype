@@ -1847,7 +1847,7 @@ footer .bottom{
 }
 
 .navbar .container::after {
-    content: 'Prototype for acquaintance';
+    content: 'Prototype of functinality';
     position: absolute;
     right: 0;
     top:26px;
@@ -1857,4 +1857,5 @@ footer .bottom{
     font-size: 12px;
     line-height: 13px;
     font-weight: bold;
+    color:#AA3939;
 }
