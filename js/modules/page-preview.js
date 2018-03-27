@@ -97,10 +97,19 @@
         $.each(pageData, function(ind, dataSub){
             var rowType = dataSub.rowType,
                 elements = dataSub.elements,
+                isColumns = dataSub.columns,
                 $tmpParent, $row;
 
 
+            $tmpParent = $(Page.templates.pageElements[rowType]);
+            $pagePreviewContent.append($tmpParent);
 
+            if(isColumns === true){
+                var $colsCnt = elements.length;
+                $row = $(Page.templates.pageElements['bs_row']);
+                $row.attr('data-columns', $colsCnt);
+                $tmpParent.html($row);
+            }
 
             $.each(elements, function(indSub,dataInner){
                 var previewBlockType = dataInner.previewBlockType,
@@ -108,23 +117,11 @@
                     $tmpSub = $(Page.templates.pageElements[previewBlockType]);
 
 
-
-                $tmpParent = $(Page.templates.pageElements[rowType]);
-                $pagePreviewContent.append($tmpParent);
-        
-                if(dataSub.columns === true){
-                    var $colsCnt = elements.length;
-                    $row = $(Page.templates.pageElements['bs_row']);
-                    $row.attr('data-columns', $colsCnt);
-                    $tmpParent.html($row);
-                }
-
-
                 if(!contentStringArr){
                     console.warn('No data - buildPreviewContent');
                 }
 
-                if(pageData.columns === true){
+                if(isColumns === true){
                     var $innerBlock = $(Page.templates.pageElements['bs_cell']);
                     $row.prepend($innerBlock);
                     $innerBlock.html($tmpSub);
