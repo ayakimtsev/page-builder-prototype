@@ -184,13 +184,18 @@
 
                         if($draggable.hasClass('pb-preview')){
                             if($('body').hasClass('state-ctrl-pressed')){
-                                var $clone = $draggable.clone();
+                                var $clone = $draggable.clone(),
+                                    panelTemplate =[];
                                 $clone.removeAttr('style')
                                       .removeClass('state-dragging')
                                             .prependTo($target);
 
-                                
-                                var panelTemplate = $clone.attr('data-blocktype') === 'columns' ? ['options','delete', 'move'] : ['edit', 'delete', 'move'];
+                                if($clone.attr('data-blocktype') === 'columns'){
+                                    Layouts.publish('innerColumnsEvents:layouts', $clone);
+                                    panelTemplate = ['options','delete', 'move'];
+                                } else{
+                                    panelTemplate = ['edit','delete', 'move'];
+                                }
                                 Mediator.publish('init:editPanel', $clone, panelTemplate);
 
                                 if(!$target.hasClass('pb-inner-column')){

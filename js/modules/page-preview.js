@@ -142,7 +142,7 @@
     };
 
     PagePreview.subscribe("init:pagePreview", function() {
-        $('#pbPreviewPage').off().on('click.pagePreview', function(e){
+        $('#pbPreviewPage').off('click.pagePreview').on('click.pagePreview', function(e){
             e.preventDefault();
             $('html, body').addClass('state-page-preview');
             $previewBox.show();
@@ -160,14 +160,14 @@
             });
         });
 
-        $('#pbPreviewClose').off().on('click.pagePreview', function(e){
+        $('#pbPreviewClose').off('click.pagePreview').on('click.pagePreview', function(e){
             $('html, body').removeClass('state-page-preview');
             e.preventDefault();
             $previewBox.hide();
             clearPreviewContent();
         });
 
-        $(document).off().keyup(function(e) {
+        $(document).off('keyup.pagePreview').on('keyup',function(e) {
             if (e.keyCode === 27)  $('#pbPreviewClose').trigger('click.pagePreview');
         });
     });
