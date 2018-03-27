@@ -875,7 +875,11 @@ body{
 
 	.pb-inner-cell{
 		padding: 0 5px;
-	}
+    }
+    
+    .site .pb-inner-cell{
+        position: relative;
+    }
 
 	.pb-inner-column{
 		background: #fafafa;
@@ -1090,7 +1094,7 @@ body{
 .pb-preview-columns{
 	padding: 30px 10px;
 }
-.pb-preview-text i,
+/* .pb-preview-text i,
 .pb-preview-image i{
     display: none;
 }
@@ -1099,7 +1103,7 @@ body{
 }
 .pb-preview-image{
     background: url(../files/icons/ico-img.png) no-repeat center center / auto 80% #fc6e51;
-}
+} */
 
 /* .pb-preview-image{
 	height: 80px;
@@ -1594,7 +1598,8 @@ body{
 .pb-inner-cell .banner{
 	height: auto;
 	display: inherit;
-	margin: 0 auto;
+    margin: 0 auto;
+    flex-direction: column;
 }
 .pb-inner-cell .banner-full-width{
     position: static;
@@ -1605,7 +1610,9 @@ body{
 .pb-inner-cell .banner-content{
 	padding: 0;
 	display: inherit;
-	align-items: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
 }
 .site .flexi-row:not(.center) .banner,
 .site .flexi-row .banner,
@@ -1868,4 +1875,68 @@ footer .bottom{
     line-height: 13px;
     font-weight: bold;
     color:#AA3939;
+}
+
+
+.pb-chosen-image{
+    text-align: center;
+    width: calc(100% - 10px);
+    max-width: 100%;
+    max-height: calc(100% - 10px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 3px;
+    z-index: -1;
+    overflow: hidden;
+    margin-right: 5px;
+}
+.pb-chosen-image img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    object-fit: contain;
+    width: 100%;
+}
+
+.pb-inner-column .state-image-chosen.pb-preview > .fa,
+.state-image-chosen > .fa{
+    left: 3px;
+    top: auto;
+    right: auto;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    background: #efefef;
+    border-radius: 50% 50% 50% 0;
+    bottom: 3px;
+    font-size: 18px;
+    /* box-shadow: 0 0 4px 0px #333; */
+}
+
+.pb-inner-column .state-image-chosen.pb-preview > .fa{
+    background: #fff;
+}
+
+.pb-banner-full-link{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+[data-type="full"] > .state-image-chosen,
+[data-type="content"] > .state-image-chosen{
+    height: 120px;
 }

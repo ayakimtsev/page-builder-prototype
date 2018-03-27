@@ -197,6 +197,7 @@
                                     panelTemplate = ['edit','delete', 'move'];
                                 }
                                 Mediator.publish('init:editPanel', $clone, panelTemplate);
+                                
 
                                 if(!$target.hasClass('pb-inner-column')){
                                     addParentLayout($target.closest('.pb-content-flow'));

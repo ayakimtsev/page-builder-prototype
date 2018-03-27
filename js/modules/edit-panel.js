@@ -131,19 +131,21 @@
     EditPanel.subscribe('init:editPanel', function(elements, availButtons)
         {//
             var $elms = $(elements);
+            $elms.find('.pb-editPanel a')
+                    .off()
+                    .parent('remove');
+            $elms.append(Page.templates['editPanel']);
+            $elms.children('.pb-editPanel').find('.pb-opts-link').each(function () {
+                var $ths = $(this),
+                    type = $ths.attr('data-type');
 
-        $elms.append(Page.templates['editPanel']);
-        $elms.find('.pb-opts-link').each(function () {
-            var $ths = $(this),
-                type = $ths.attr('data-type');
+                if (!isAvailable(type, availButtons)) {
+                    $ths.hide();
+                    return;
+                }
 
-            if (!isAvailable(type, availButtons)) {
-                $ths.hide();
-                return;
-            }
-
-            chooseBehavior($ths, type);
-        });
+                chooseBehavior($ths, type);
+            });
     }//
     );
 

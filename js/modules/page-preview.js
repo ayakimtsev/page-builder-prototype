@@ -59,6 +59,11 @@
 
 
     function attachData(contentStringArr,$tmpSub){
+        var hasImage = false,
+            hasLinkTitle = false,
+            hasLink = false,
+            link = '';
+
         $.each(contentStringArr, function(indContent,dataContent){
             var name = dataContent.name,
                 value = dataContent.value;
@@ -66,27 +71,37 @@
 
             switch(name){
                 case 'pb_image':
+                    if(value) hasImage = true;
                     $tmpSub.find('[data-type="'+name+'"]').text(value);
                     $tmpSub.find('img').attr('src', 'files/content/' + value);
                     break;
                 case 'pb_html':
                     $tmpSub.find('[data-type="'+name+'"]').html(value);
                     break;
-                default:
-                    if(name === 'pb_link'){
-                        if(value){
-                            $tmpSub.find('[data-type="'+name+'"]').attr('href', 'http://'+value);
-                        } else {
-                            $tmpSub.find('[data-type="'+name+'"]').hide();
-                        }
-                        
+                case 'pb_linktitle':
+                    if(value) hasLinkTitle = true;
+                    $tmpSub.find('[data-type="'+name+'"]').text(value);
+                    break;
+                case 'pb_link':
+                    if(value){
+                        hasLink = true;
+                        link = 'http://'+value;
+                        $tmpSub.find('[data-type="'+name+'"]').attr('href', link);
                     } else {
-                        $tmpSub.find('[data-type="'+name+'"]').text(value);
+                        $tmpSub.find('[data-type="'+name+'"]').hide();
                     }
-                    
+                    break;
+                default:
+                    $tmpSub.find('[data-type="'+name+'"]').text(value);
             }
-        });
 
+
+
+        });
+        if(hasImage && hasLink && !hasLinkTitle){
+            $tmpSub.find('[data-type="pb_link"]').hide();
+            $tmpSub.append('<a target="_blank" href="'+link+'" class="pb-banner-full-link"></a>');
+        }
     }
     function buildPreviewContent($pagePreviewContent, pageData){
         if(typeof pageData === 'object' && pageData.length === 0 || typeof pageData === 'undefined'){

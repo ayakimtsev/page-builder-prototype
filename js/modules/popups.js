@@ -127,6 +127,16 @@
                     dataStr = JSON.stringify(dataArray);
 
 
+                if(dataArray[0].name === "pb_image" && dataArray[0].value !== ""){
+                    $linkedPreview.children('.pb-chosen-image').remove();
+                    $linkedPreview
+                            .addClass('state-image-chosen')
+                            .append('<div class="pb-chosen-image"><img src="'+ ('files/content/'+dataArray[0].value)+'"></div>');
+                } else {
+                    $linkedPreview
+                        .removeClass('state-image-chosen')
+                        .children('.pb-chosen-image').remove();
+                }
                 $linkedPreview.attr('data-edit-string', dataStr);
                 closePopup($(this));
             })
