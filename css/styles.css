@@ -1090,6 +1090,16 @@ body{
 .pb-preview-columns{
 	padding: 30px 10px;
 }
+.pb-preview-text i,
+.pb-preview-image i{
+    display: none;
+}
+.pb-preview-text{
+    background: url(../files/icons/ico-text.png) no-repeat center center / auto 80% #ffce54;
+}
+.pb-preview-image{
+    background: url(../files/icons/ico-img.png) no-repeat center center / auto 80% #fc6e51;
+}
 
 /* .pb-preview-image{
 	height: 80px;
