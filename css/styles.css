@@ -1023,14 +1023,14 @@ body{
 		display: block;
 		width: 100%;
 		padding: 5px;
-		margin-bottom: 5px;
+		margin-bottom: 0;
 	}
 
 	.pb-page-scheme button:hover {
 		cursor: pointer;
 	}
 
-	.pb-page-scheme button[aria-pressed="false"] {}
+	/* .pb-page-scheme button[aria-pressed="false"] {} */
 
 	.pb-page-scheme button[aria-pressed="true"] {
 		cursor: not-allowed;
@@ -1143,10 +1143,10 @@ body{
 	flex: 0 1 16.6666%;
 }
 
-.state-tablet-view {
-	/* width: 100%;
-	flex-basis: 100% */
-}
+/* .state-tablet-view {
+	width: 100%;
+	flex-basis: 100% 
+} */
 
 .state-tablet-view .state-dropped[data-type="full"],
 .state-tablet-view .state-dropped[data-type="content"],
