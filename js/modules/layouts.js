@@ -193,6 +193,9 @@
                                 if($clone.attr('data-blocktype') === 'columns'){
                                     Layouts.publish('innerColumnsEvents:layouts', $clone);
                                     panelTemplate = ['options','delete', 'move'];
+
+                                    // var $innerPreviews = $clone.find('.pb-preview');
+                                    // Mediator.publish('init:editPanel', $innerPreviews, ['edit','delete', 'move']);
                                 } else{
                                     panelTemplate = ['edit','delete', 'move'];
                                 }

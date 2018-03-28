@@ -1334,9 +1334,15 @@ ul.usp-list {
     font-weight: 700;
     text-shadow: 0 1px 1px #000!important
 }
+.site .pb-inner-cell .banner h1 {
+    text-shadow: none;
+}
 
 .site .banner h2 {
     text-shadow: 0 1px 1px #000!important
+}
+.site .pb-inner-cell .banner h2 {
+    text-shadow: none;
 }
 
 .site .banner {
