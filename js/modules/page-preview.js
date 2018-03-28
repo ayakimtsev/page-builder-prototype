@@ -134,6 +134,7 @@
 
                 if(!contentStringArr){
                     console.warn('No data - buildPreviewContent');
+                    return;
                 }
 
                 if(isColumns === true){
